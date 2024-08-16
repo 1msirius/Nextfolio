@@ -20,6 +20,7 @@ Deploy your Nextfolio site with Vercel in minutes.
 - Light and dark mode toggle
 - SEO optimization with sitemap, robots, and JSON-LD schema
 - RSS feed generation
+- Dynamic OG images
 - [Vercel Web Analytics](https://vercel.com/docs/speed-insights) and [Speed Insights](https://vercel.com/docs/speed-insights) for web analytics and website's performance
 - Seamlessly embed interactive tweets and YouTube videos
 - Captions for photos, tweets, and videos
