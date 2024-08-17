@@ -4,7 +4,7 @@ publishedAt: "2024-08-11"
 summary: "Nextfolio custom MDX examples."
 ---
 
-Nextfolio uses [custom MDX](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx) for blog posts, making it easy to include TSX components such as interactive embeds, charts, or alerts directly in your markdown content.
+Nextfolio uses [custom MDX](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx) for blog posts, making it easy to include JSX components such as interactive embeds, charts, or alerts directly in your markdown content.
 
 Here are some examples of using MDX:
 
@@ -154,6 +154,22 @@ Renders:
     ],
   }}
 />
+
+## Math Expressions
+
+Nextfolio uses [KaTeX](https://katex.org/) to render mathematical expressions in MDX posts.
+
+```
+$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$
+```
+
+renders:
+
+$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$
 
 ## Callout
 
