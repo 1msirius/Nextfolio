@@ -20,6 +20,7 @@ export async function GET() {
           <pubDate>${new Date(
             post.metadata.publishedAt
           ).toUTCString()}</pubDate>
+          <category>${post.metadata.category}</category>
         </item>`
     )
     .join("\n");
@@ -31,7 +32,7 @@ export async function GET() {
     <channel>
         <title>Nextfolio</title>
         <link>${baseUrl}</link>
-        <description>A portfolio template built with Next.js.</description>
+        <description>A portfolio template built with Next.js, Vercel, and Tailwind CSS.</description>
         <lastBuildDate>${lastBuildDate}</lastBuildDate>
         ${itemsXml}
     </channel>
