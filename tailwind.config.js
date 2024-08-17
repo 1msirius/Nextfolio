@@ -17,8 +17,8 @@ module.exports = {
         },
         neutral: {
           css: {
-            "--tw-prose-body": theme("colors.black", "#000"),
-            "--tw-prose-links": theme("colors.black", "#000"),
+            "--tw-prose-body": "#171717",
+            "--tw-prose-links": "#000",
           },
         },
       }),
