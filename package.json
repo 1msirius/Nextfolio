@@ -13,6 +13,7 @@
     "@vercel/analytics": "^1.3.1",
     "@vercel/speed-insights": "^1.0.12",
     "geist": "1.2.2",
+    "katex": "^0.16.11",
     "next": "^14.2.5",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.3.0",
@@ -22,6 +23,8 @@
     "react-tweet": "^3.2.1",
     "react-wrap-balancer": "^1.1.1",
     "react-youtube": "^10.1.0",
+    "rehype-katex": "^7.0.0",
+    "remark-math": "^6.0.0",
     "sugar-high": "^0.6.1",
     "typescript": "5.3.3"
   },
