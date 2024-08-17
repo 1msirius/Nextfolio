@@ -27,7 +27,7 @@ export default function Page() {
         <p className="mb-5">
           Nextfolio includes all the essentials for a stunning portfolio: SEO
           optimization, MDX support, an RSS feed, analytics, tweet and YouTube
-          embeds and{" "}
+          embeds, KaTeX integration and{" "}
           <a
             target="_blank"
             href="https://github.com/1msirius/Nextfolio?tab=readme-ov-file#features"
