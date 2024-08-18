@@ -1,8 +1,9 @@
-import { getBlogPosts } from 'app/blog/utils'
+import { MetadataRoute } from 'next';
+import { getBlogPosts } from './lib/posts'
 
 export const baseUrl = 'https://nextfolio-template.vercel.app'
 
-export default async function sitemap() {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogs = getBlogPosts().map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: post.metadata.publishedAt,
