@@ -36,5 +36,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Ignore public/feed directory
-/public/feed/
