@@ -25,9 +25,9 @@ export default function Page() {
           Vercel, and Tailwind CSS for great performance.
         </p>
         <p className="mb-5">
-          Nextfolio includes all the essentials for a stunning portfolio: SEO
-          optimization, MDX support, an RSS feed, analytics, tweet and YouTube
-          embeds, KaTeX integration and{" "}
+          Nextfolio includes all the essentials for a stunning portfolio: SEO,
+          MDX support, RSS, Atom, & JSON feeds, analytics, tweet & YouTube
+          embeds, KaTeX integration,{" "}
           <a
             target="_blank"
             href="https://github.com/1msirius/Nextfolio?tab=readme-ov-file#features"
