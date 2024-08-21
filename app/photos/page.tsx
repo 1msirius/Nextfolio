@@ -1,5 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import photo1 from "public/photos/photo1.jpg";
+import photo2 from "public/photos/photo2.jpg";
+import photo3 from "public/photos/photo3.jpg";
+import photo4 from "public/photos/photo4.jpg";
+import photo5 from "public/photos/photo5.jpg";
+import photo6 from "public/photos/photo6.jpg";
 
 export const metadata = {
   title: "Photos",
@@ -19,7 +25,7 @@ export default function Research() {
           >
             <Image
               alt="Colosseum"
-              src="/photos/photo6.jpg"
+              src={photo6}
               fill
               sizes="(max-width: 768px) 213px, 33vw"
               priority
@@ -35,7 +41,7 @@ export default function Research() {
           >
             <Image
               alt="Taj Mahal"
-              src="/photos/photo5.jpg"
+              src={photo5}
               fill
               sizes="(max-width: 768px) 213px, 33vw"
               priority
@@ -51,7 +57,7 @@ export default function Research() {
           >
             <Image
               alt="Sacré-Cœur Basilica"
-              src="/photos/photo3.jpg"
+              src={photo3}
               fill
               sizes="(max-width: 768px) 213px, 33vw"
               priority
@@ -67,7 +73,7 @@ export default function Research() {
           >
             <Image
               alt="Effiel Tower"
-              src="/photos/photo4.jpg"
+              src={photo4}
               fill
               sizes="(max-width: 768px) 213px, 33vw"
               priority
@@ -83,7 +89,7 @@ export default function Research() {
           >
             <Image
               alt="A tall tower with a clock on top of it"
-              src="/photos/photo2.jpg"
+              src={photo2}
               fill
               sizes="(max-width: 768px) 213px, 33vw"
               priority
@@ -99,7 +105,7 @@ export default function Research() {
           >
             <Image
               alt="Roman columns"
-              src="/photos/photo1.jpg"
+              src={photo1}
               fill
               sizes="(max-width: 768px) 213px, 33vw"
               priority
