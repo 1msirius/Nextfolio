@@ -46,7 +46,7 @@ Nextfolio uses [Next.js Image](https://nextjs.org/docs/basic-features/image-opti
 
 ```
 <Image
-  src="/photos/ai-art.jpg"
+  src="/ai-art.jpg"
   alt="AI Art"
   unoptimized
   width={640}
@@ -58,8 +58,8 @@ Nextfolio uses [Next.js Image](https://nextjs.org/docs/basic-features/image-opti
 Renders:
 
 <Image
-  src="/photos/ai-art.jpg"
-  alt="AI Art"
+  src="/ai-art.jpg"
+  alt="Théâtre D'Opéra Spatial"
   unoptimized
   width={640}
   height={500}
@@ -158,7 +158,7 @@ Renders:
 
 ## Math Expressions
 
-Nextfolio uses [KaTeX](https://katex.org/) to render mathematical expressions in MDX posts.
+Nextfolio allows you to render mathematical expressions in MDX posts using [KaTeX](https://katex.org/) . Simply wrap your expression in **$** to include KaTeX within your MDX content.
 
 ```
 $
@@ -174,7 +174,7 @@ $
 
 ## Callout
 
-Nextfolio uses a custom [callout component](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx#L63) to render important information in MDX posts.
+Nextfolio uses a custom [callout component](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx#L62) to render important information in MDX posts.
 
 ```
 <Callout emoji="💡">
