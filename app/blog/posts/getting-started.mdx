@@ -5,7 +5,7 @@ summary: "Instructions to build and configure your Nextfolio portfolio."
 category: "Web Development"
 ---
 
-Nextfolio includes everything required to build a stunning portfolio website, including SEO, MDX posts, an RSS feed, web analytics, tweet embeds, and more.
+Nextfolio includes everything required to build a stunning portfolio website, including SEO, MDX posts, RSS, Atom, & JSON feeds, web analytics, tweet embeds, and more.
 
 Follow these steps to set up your portfolio with your content.
 
@@ -78,14 +78,17 @@ let routes = ['', '/blog', '/photos'].map((route) => ({  // Update routes accord
 }));
 ```
 
-### RSS Feed
+### RSS, Atom, & JSON Feeds
 
-Customize the title and description in **/app/rss/route.ts** file to generate the RSS feed:
+Customize the title, description, and copyright in the **/app/[slug]/route.ts** file to generate RSS, Atom, and JSON feeds.
 
 ```
-<title>Nextfolio</title> // Update your title
-<description>A portfolio template built with Next.js, Vercel, and Tailwind CSS.</description> // Update your description
+title: "Nextfolio", // Update your name
+description: "A portfolio template built with Next.js, Vercel, and Tailwind CSS.", // Update your description
+copyright: `All rights reserved ${new Date().getFullYear()}, Nextfolio`, // Update your copyright
 ```
+
+Access the feeds at [/feed.xml](/feed.xml) for RSS, [/atom.xml](/atom.xml) for Atom, and [/feed.json](/feed.json) for JSON.
 
 ### Slug
 
