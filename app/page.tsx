@@ -27,7 +27,7 @@ export default function Page() {
         <p className="mb-5">
           Nextfolio includes all the essentials for a stunning portfolio: SEO,
           MDX support, RSS, Atom, & JSON feeds, analytics, tweet & YouTube
-          embeds, KaTeX integration,{" "}
+          embeds, KaTeX integration, and{" "}
           <a
             target="_blank"
             href="https://github.com/1msirius/Nextfolio?tab=readme-ov-file#features"
@@ -36,7 +36,7 @@ export default function Page() {
           </a>
           .
         </p>
-        <p className="mb-3">
+        <p className="mb-5">
           <a
             href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio"
             target="_blank"
@@ -48,7 +48,16 @@ export default function Page() {
           <a href="/blog/getting-started">Getting Started</a> post.
         </p>
 
-        <p className="pt-5">
+        <a
+          href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mb-5"
+        >
+          <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+        </a>
+
+        <p>
           Built and maintained by{" "}
           <a href="https://imsirius.xyz/" target="_blank">
             Sirius
