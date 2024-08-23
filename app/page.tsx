@@ -37,6 +37,10 @@ export default function Page() {
           .
         </p>
         <p className="mb-5">
+          Nextfolio is fully customizable, allowing you to easily add more
+          features.
+        </p>
+        <p className="mb-5">
           <a
             href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio"
             target="_blank"
@@ -47,16 +51,6 @@ export default function Page() {
           instructions in the{" "}
           <a href="/blog/getting-started">Getting Started</a> post.
         </p>
-
-        <a
-          href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mb-5"
-        >
-          <img src="https://vercel.com/button" alt="Deploy with Vercel" />
-        </a>
-
         <p>
           Built and maintained by{" "}
           <a href="https://imsirius.xyz/" target="_blank">
