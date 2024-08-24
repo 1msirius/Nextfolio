@@ -1,8 +1,9 @@
 "use client";
+
 import * as React from "react";
 import { useTheme } from "next-themes";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { type ThemeProviderProps } from "next-themes/dist/types";
+import type { ThemeProviderProps } from "next-themes/dist/types";
 import { FaCircleHalfStroke } from "react-icons/fa6";
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
@@ -18,26 +19,32 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   );
 }
 
-export function ThemeSwitch() {
+export const ThemeSwitch: React.FC = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
-  React.useEffect(() => setMounted(true), []);
+  React.useEffect(() => {
+    setMounted(true);
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => setTheme(mq.matches ? "dark" : "light");
+    handleChange();
+    mq.addEventListener("change", handleChange);
+    return () => mq.removeEventListener("change", handleChange);
+  }, [setTheme]);
 
-  const currentTheme = mounted ? resolvedTheme : "dark"; // Default to 'dark' to avoid initial flicker
+  if (!mounted) return null;
 
   return (
     <button
-      aria-label="Toggle Dark Mode"
-      type="button"
+      aria-label="Toggle Mode"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       className="flex items-center justify-center transition-opacity duration-300 hover:opacity-90"
-      onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
     >
-      {currentTheme === "dark" ? (
-        <FaCircleHalfStroke className="h-[14px] w-[14px] text-[#D4D4D4]" />
-      ) : (
-        <FaCircleHalfStroke className="h-[14px] w-[14px] text-[#1c1c1c]" />
-      )}
+      <FaCircleHalfStroke
+        className={`h-[14px] w-[14px] ${
+          resolvedTheme === "dark" ? "text-[#D4D4D4]" : "text-[#1c1c1c]"
+        }`}
+      />
     </button>
   );
-}
+};
