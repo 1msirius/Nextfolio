@@ -32,7 +32,15 @@ export const ThemeSwitch: React.FC = () => {
     return () => mq.removeEventListener("change", handleChange);
   }, [setTheme]);
 
-  if (!mounted) return null;
+  if (!mounted) {
+    // Return the light theme icon as a placeholder
+    return (
+      <FaCircleHalfStroke
+        className="h-[14px] w-[14px] text-[#1c1c1c]"
+        aria-hidden="true"
+      />
+    );
+  }
 
   return (
     <button
