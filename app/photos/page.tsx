@@ -12,7 +12,7 @@ export const metadata = {
   description: "My Photos",
 };
 
-export default function Research() {
+export default function Photos() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-medium tracking-tighter">Photos</h1>
