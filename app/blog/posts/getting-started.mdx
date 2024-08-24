@@ -72,7 +72,7 @@ export const baseUrl = 'https://nextfolio.site'; // Update your site URL
 Adjust the routes to match your portfolio’s navigation:
 
 ```
-let routes = ['', '/blog', '/photos'].map((route) => ({  // Update routes according to your portfolio navbar
+let routes = ['', '/blog', '/projects', '/photos'].map((route) => ({  // Update routes according to your portfolio navbar
   url: `${baseUrl}${route}`,
   lastModified: new Date().toISOString().split('T')[0],
 }));
