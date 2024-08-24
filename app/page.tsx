@@ -20,11 +20,11 @@ export default function Page() {
       </h1>
 
       <div className="prose prose-neutral dark:prose-invert">
-        <p className="mb-5">
+        <p>
           A clean, fast, and simple portfolio template built with Next.js,
           Vercel, and Tailwind CSS for great performance.
         </p>
-        <p className="mb-5">
+        <p>
           Nextfolio includes all the essentials for a stunning portfolio: SEO,
           MDX support, RSS, Atom, & JSON feeds, analytics, tweet & YouTube
           embeds, KaTeX integration, and{" "}
@@ -36,11 +36,11 @@ export default function Page() {
           </a>
           .
         </p>
-        <p className="mb-5">
+        <p>
           Nextfolio is fully customizable, allowing you to easily add more
           features.
         </p>
-        <p className="mb-5">
+        <p>
           <a
             href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio"
             target="_blank"
