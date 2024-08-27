@@ -6,20 +6,21 @@ import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
-import { baseUrl } from "./sitemap";
+import { BASE_URL } from "./config";
 import { ThemeProvider } from "./components/theme-switch";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "Nextfolio",
     template: "%s | Nextfolio",
   },
   description: "A clean, simple, and fast portfolio, built with Next.js for optimal performance.",
   openGraph: {
+    images: "/og-social-card.png",
     title: "Nextfolio",
     description: "A clean, simple, and fast portfolio, built with Next.js for optimal performance.",
-    url: baseUrl,
+    url: BASE_URL,
     siteName: "Nextfolio",
     locale: "en_US",
     type: "website",
