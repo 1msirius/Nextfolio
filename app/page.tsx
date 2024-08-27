@@ -22,7 +22,7 @@ export default function Page() {
       <div className="prose prose-neutral dark:prose-invert">
         <p>
           A clean, fast, and simple portfolio template built with Next.js,
-          Vercel, and Tailwind CSS for great performance.
+          Vercel, and Tailwind CSS for optimal performance.
         </p>
         <p>
           Nextfolio includes all the essentials for a stunning portfolio: SEO,
@@ -37,8 +37,11 @@ export default function Page() {
           .
         </p>
         <p>
-          Nextfolio is fully customizable, allowing you to easily add more
-          features.
+          Nextfolio is{" "}
+          <a href="https://github.com/1msirius/Nextfolio" target="_blank">
+            open-source
+          </a>{" "}
+          and fully customizable, making it easy to add more features.
         </p>
         <p>
           <a
