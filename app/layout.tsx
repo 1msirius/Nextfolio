@@ -15,11 +15,13 @@ export const metadata: Metadata = {
     default: "Nextfolio",
     template: "%s | Nextfolio",
   },
-  description: "A clean, fast, and simple portfolio template built with Next.js, Vercel, and Tailwind CSS for great performance.",
+  description:
+    "A clean, fast, & simple portfolio template built with Next.js, Vercel, & Tailwind CSS for optimal performance.",
   openGraph: {
     images: "/og-social-card.png",
     title: "Nextfolio",
-    description: "A clean, fast, and simple portfolio template built with Next.js, Vercel, and Tailwind CSS for great performance.",
+    description:
+      "A clean, fast, & simple portfolio template built with Next.js, Vercel, & Tailwind CSS for optimal performance.",
     url: BASE_URL,
     siteName: "Nextfolio",
     locale: "en_US",
