@@ -9,6 +9,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa6";
 import { TbMailFilled } from "react-icons/tb";
+import { TITLE } from "app/config";
 
 const YEAR = new Date().getFullYear();
 
@@ -24,7 +25,10 @@ function SocialLinks() {
   return (
     <div className="flex text-lg gap-3.5 float-right transition-opacity duration-300 hover:opacity-90">
       <SocialLink href="https://x.com/1tssirius" icon={FaXTwitter} />
-      <SocialLink href="https://github.com/1msirius/Nextfolio" icon={FaGithub} />
+      <SocialLink
+        href="https://github.com/1msirius/Nextfolio"
+        icon={FaGithub}
+      />
       <SocialLink href="https://www.instagram.com/" icon={FaInstagram} />
       <SocialLink href="https://www.linkedin.com/" icon={FaLinkedinIn} />
       <SocialLink href="mailto:example@gmail.com" icon={TbMailFilled} />
@@ -45,7 +49,7 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Nextfolio.
+        {TITLE}
       </a>
       <style jsx>{`
         @media screen and (max-width: 480px) {
