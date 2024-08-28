@@ -1,8 +1,9 @@
-import { ImageResponse } from 'next/og'
+import { ImageResponse } from "next/og";
+import { TITLE } from "app/config";
 
 export function GET(request: Request) {
-  let url = new URL(request.url)
-  let title = url.searchParams.get('title') || 'Nextfolio'
+  let url = new URL(request.url);
+  let title = url.searchParams.get("title") || TITLE;
 
   return new ImageResponse(
     (
@@ -18,5 +19,5 @@ export function GET(request: Request) {
       width: 1200,
       height: 630,
     }
-  )
+  );
 }
