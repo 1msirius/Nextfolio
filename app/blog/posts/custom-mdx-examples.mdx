@@ -29,6 +29,11 @@ _This is italic text_
 
 > If today were the last day of my life, would I want to do what I am about to do today? – Steve Jobs
 
+## Links
+
+- Nextfolio is built with [Next.js](https://nextjs.org).
+- Nextfolio uses [pnpm](https://pnpm.io/) for package management.
+
 ## CodeBlocks
 
 ```
@@ -47,11 +52,9 @@ Nextfolio uses [Next.js Image](https://nextjs.org/docs/basic-features/image-opti
 ```
 <Image
   src="/og-social-card.png"
-  alt="Nextfolio Social Cardt"
-  unoptimized
+  alt="Nextfolio Social Card"
   width={640}
   height={500}
-  priority
 />
 ```
 
@@ -60,17 +63,35 @@ Renders:
 <Image
   src="/og-social-card.png"
   alt="Nextfolio Social Card"
-  unoptimized
   width={640}
   height={500}
-  priority
 />
 
-## Links
+## Image Grid
 
-- Nextfolio is built with [Next.js](https://nextjs.org).
-- Nextfolio is styled with [Tailwind CSS](https://tailwindcss.com/).
-- Nextfolio uses [pnpm](https://pnpm.io/) for package management.
+Nextfolio uses a custom [image grid component](https://github.com/1msirius/Nextfolio/blob/main/app/components/image-grid.tsx) to display image galleries.
+
+```
+<ImageGrid
+  columns={3} // Accepts 2, 3, or 4 columns
+  images={[
+    { src: "/photos/photo1.jpg", alt: "Photo1", href: "#" },
+    { src: "/photos/photo2.jpg", alt: "Photo2", href: "#" },
+    { src: "/photos/photo3.jpg", alt: "Photo3", href: "#" },
+  ]}
+/>
+```
+
+Renders:
+
+<ImageGrid
+  columns={3}
+  images={[
+    { src: "/photos/photo1.jpg", alt: "Photo1", href: "#" },
+    { src: "/photos/photo2.jpg", alt: "Photo2", href: "#" },
+    { src: "/photos/photo3.jpg", alt: "Photo3", href: "#" },
+  ]}
+/>
 
 ## Embeds
 
@@ -118,7 +139,7 @@ Renders:
 
 ## Tables
 
-Nextfolio uses a custom [table component](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx#L37) to render tables in MDX posts.
+Nextfolio uses a custom [table component](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx#L38) to render tables in MDX posts.
 
 ```
 <Table
@@ -166,7 +187,7 @@ $
 $
 ```
 
-renders:
+Renders:
 
 $
 \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
@@ -174,7 +195,7 @@ $
 
 ## Callout
 
-Nextfolio uses a custom [callout component](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx#L62) to render important information in MDX posts.
+Nextfolio uses a custom [callout component](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx#L63) to render important information in MDX posts.
 
 ```
 <Callout emoji="💡">
