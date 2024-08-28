@@ -54,7 +54,7 @@ The server will be running at [http://localhost:3000](http://localhost:3000).
 1. Update site details in `app/config.ts` for metadata, SEO, feeds, and Open Graph.
 2. Update your routes in `app/sitemap.ts` for SEO optimization.
 3. Update social links and copyright info in `app/components/footer.tsx`.
-4. Update your blog posts in the `/content folder`.
+4. Update your blog posts in the `/content` folder.
 
 For more information about configuration, follow the instructions in the [Getting Started](https://nextfolio-template.vercel.app/blog/getting-started#configuration) post.
 
