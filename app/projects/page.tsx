@@ -1,6 +1,11 @@
 import React from "react";
 import { projects } from "./project-data";
 
+export const metadata = {
+  title: "Projects",
+  description: "My Projects",
+};
+
 export default function Projects() {
   return (
     <section>
