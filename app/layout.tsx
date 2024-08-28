@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "A clean, fast, & simple portfolio template built with Next.js, Vercel, & Tailwind CSS for optimal performance.",
   openGraph: {
-    images: "/og-social-card.png",
+    images: "/opengraph-image.png",
     title: "Nextfolio",
     description:
       "A clean, fast, & simple portfolio template built with Next.js, Vercel, & Tailwind CSS for optimal performance.",
