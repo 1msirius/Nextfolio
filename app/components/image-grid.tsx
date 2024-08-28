@@ -10,8 +10,10 @@ interface ImageGridProps {
   columns?: 2 | 3 | 4; // Accepts 2, 3, or 4 columns
 }
 
-// Named export for ImageGrid
-export const ImageGrid: React.FC<ImageGridProps> = ({ images, columns = 3 }) => {
+export const ImageGrid: React.FC<ImageGridProps> = ({
+  images,
+  columns = 3,
+}) => {
   const gridClass = {
     2: "grid-cols-2 sm:grid-cols-2",
     3: "grid-cols-2 sm:grid-cols-3",
