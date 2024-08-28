@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CustomMDX } from "app/components/mdx";
 import { formatDate, getBlogPosts } from "app/lib/posts";
-import { BASE_URL } from "app/config";
+import { BASE_URL, NAME } from "app/config";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -80,7 +80,7 @@ export default function Blog({ params }) {
             url: `${BASE_URL}/blog/${post.slug}`,
             author: {
               "@type": "Person",
-              name: "Nextfolio",
+              name: NAME,
             },
           }),
         }}
