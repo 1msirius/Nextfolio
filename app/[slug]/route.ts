@@ -1,5 +1,5 @@
 import { Feed } from "feed";
-import { BASE_URL } from "app/config";
+import { metaData } from "app/config";
 import { getBlogPosts } from "app/lib/posts";
 import { NextResponse } from "next/server";
 
@@ -9,14 +9,14 @@ export async function GET(request: Request) {
     title: "Nextfolio",
     description:
       "A portfolio template built with Next.js, Vercel, and Tailwind CSS.",
-    id: BASE_URL,
-    link: BASE_URL,
+    id: metaData.baseUrl,
+    link: metaData.baseUrl,
     copyright: `All rights reserved ${new Date().getFullYear()}, Nextfolio`,
     updated: new Date(),
     feedLinks: {
-      rss2: `${BASE_URL}/feed.xml`,
-      atom: `${BASE_URL}/atom.xml`,
-      json: `${BASE_URL}/feed.json`,
+      rss2: `${metaData.baseUrl}/feed.xml`,
+      atom: `${metaData.baseUrl}/atom.xml`,
+      json: `${metaData.baseUrl}/feed.json`,
     },
   });
 
@@ -24,8 +24,8 @@ export async function GET(request: Request) {
   allPosts.forEach((post) => {
     feed.addItem({
       title: post.metadata.title,
-      id: `${BASE_URL}/blog/${post.slug}`,
-      link: `${BASE_URL}/blog/${post.slug}`,
+      id: `${metaData.baseUrl}/blog/${post.slug}`,
+      link: `${metaData.baseUrl}/blog/${post.slug}`,
       description: post.metadata.summary,
       date: new Date(post.metadata.publishedAt),
       category: post.metadata.category
