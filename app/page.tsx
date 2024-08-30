@@ -1,9 +1,10 @@
 import Image from "next/image";
+import { socialLinks } from "./config";
 
 export default function Page() {
   return (
     <section>
-      <a href="https://x.com/1tssirius" target="_blank">
+      <a href={socialLinks.twitter} target="_blank">
         <Image
           src="/profile.png"
           alt="Profile photo"
@@ -38,7 +39,7 @@ export default function Page() {
         </p>
         <p>
           Nextfolio is{" "}
-          <a href="https://github.com/1msirius/Nextfolio" target="_blank">
+          <a href={socialLinks.github} target="_blank">
             open-source
           </a>{" "}
           and fully customizable, making it easy to add more features.
