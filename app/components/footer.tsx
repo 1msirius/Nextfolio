@@ -9,7 +9,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa6";
 import { TbMailFilled } from "react-icons/tb";
-import { TITLE } from "app/config";
+import { metaData, socialLinks } from "app/config";
 
 const YEAR = new Date().getFullYear();
 
@@ -24,14 +24,11 @@ function SocialLink({ href, icon: Icon }) {
 function SocialLinks() {
   return (
     <div className="flex text-lg gap-3.5 float-right transition-opacity duration-300 hover:opacity-90">
-      <SocialLink href="https://x.com/1tssirius" icon={FaXTwitter} />
-      <SocialLink
-        href="https://github.com/1msirius/Nextfolio"
-        icon={FaGithub}
-      />
-      <SocialLink href="https://www.instagram.com/" icon={FaInstagram} />
-      <SocialLink href="https://www.linkedin.com/" icon={FaLinkedinIn} />
-      <SocialLink href="mailto:example@gmail.com" icon={TbMailFilled} />
+      <SocialLink href={socialLinks.twitter} icon={FaXTwitter} />
+      <SocialLink href={socialLinks.github} icon={FaGithub} />
+      <SocialLink href={socialLinks.instagram} icon={FaInstagram} />
+      <SocialLink href={socialLinks.linkedin} icon={FaLinkedinIn} />
+      <SocialLink href={socialLinks.email} icon={TbMailFilled} />
       <a href="/feed.xml" target="_self">
         <FaRss />
       </a>
@@ -45,11 +42,11 @@ export default function Footer() {
       <time>© {YEAR}</time>{" "}
       <a
         className="no-underline"
-        href="https://github.com/1msirius/Nextfolio"
+        href={socialLinks.twitter}
         target="_blank"
         rel="noopener noreferrer"
       >
-        {TITLE}
+        {metaData.title}
       </a>
       <style jsx>{`
         @media screen and (max-width: 480px) {

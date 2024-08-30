@@ -6,22 +6,22 @@ import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
-import { BASE_URL, TITLE, OG_IMAGE, DESCRIPTION } from "./config";
 import { ThemeProvider } from "./components/theme-switch";
+import { metaData } from "./config";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(metaData.baseUrl),
   title: {
-    default: TITLE,
-    template: `%s | ${TITLE}`,
+    default: metaData.title,
+    template: `%s | ${metaData.title}`,
   },
-  description: DESCRIPTION,
+  description: metaData.description,
   openGraph: {
-    images: OG_IMAGE,
-    title: TITLE,
-    description: DESCRIPTION,
-    url: BASE_URL,
-    siteName: TITLE,
+    images: metaData.ogImage,
+    title: metaData.title,
+    description: metaData.description,
+    url: metaData.baseUrl,
+    siteName: metaData.name,
     locale: "en_US",
     type: "website",
   },
