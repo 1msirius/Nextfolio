@@ -51,7 +51,7 @@ The server will be running at [http://localhost:3000](http://localhost:3000).
 
 ## Configuration
 
-1. Update site details in `app/config.ts` for metadata, SEO, feeds, social URLs, and Open Graph.
+1. Update the site metadata and social links in `app/config.ts` to set up SEO, feeds, social links, and Open Graph settings.
 2. Update your routes in `app/sitemap.ts` for SEO optimization.
 3. Update your blog posts in the `/content` folder.
 
