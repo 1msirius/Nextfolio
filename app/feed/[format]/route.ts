@@ -3,21 +3,14 @@ import { getBlogPosts } from "app/lib/posts";
 import { metaData } from "app/config";
 import { NextResponse } from "next/server";
 
-export async function generateStaticParams() {
-  return [
-    { format: "feed.xml" },
-    { format: "atom.xml" },
-    { format: "feed.json" },
-  ];
-}
-
 export async function GET(
-  request: Request,
+  _: Request,
   { params }: { params: { format: string } }
 ) {
-  const format = params.format;
+  const { format } = params;
+  const validFormats = ["rss.xml", "atom.xml", "feed.json"];
 
-  if (!["feed.xml", "atom.xml", "feed.json"].includes(format)) {
+  if (!validFormats.includes(format)) {
     return NextResponse.json(
       { error: "Unsupported feed format" },
       { status: 404 }
@@ -37,7 +30,7 @@ export async function GET(
     feedLinks: {
       json: `${metaData.baseUrl}/feed.json`,
       atom: `${metaData.baseUrl}/atom.xml`,
-      rss: `${metaData.baseUrl}/feed.xml`,
+      rss: `${metaData.baseUrl}/rss.xml`,
     },
   });
 
@@ -45,9 +38,8 @@ export async function GET(
 
   allPosts.forEach((post) => {
     const postUrl = `${metaData.baseUrl}/blog/${post.slug}`;
-
     const categories = post.metadata.tags
-      ? post.metadata.tags.split(",").map((cat) => cat.trim())
+      ? post.metadata.tags.split(",").map((tag) => tag.trim())
       : [];
 
     feed.addItem({
@@ -55,38 +47,23 @@ export async function GET(
       id: postUrl,
       link: postUrl,
       description: post.metadata.summary,
-      // content: post.metadata.summary,
       category: categories.map((cat) => ({ name: cat })),
       date: new Date(post.metadata.publishedAt),
     });
   });
 
-  let response: string;
-  let contentType: string;
+  const responseMap: Record<string, { content: string; contentType: string }> =
+    {
+      "rss.xml": { content: feed.rss2(), contentType: "application/xml" },
+      "atom.xml": { content: feed.atom1(), contentType: "application/xml" },
+      "feed.json": { content: feed.json1(), contentType: "application/json" },
+    };
 
-  switch (format) {
-    case "feed.xml":
-      response = feed.rss2();
-      contentType = "application/xml";
-      break;
-    case "atom.xml":
-      response = feed.atom1();
-      contentType = "application/xml";
-      break;
-    case "feed.json":
-      response = feed.json1();
-      contentType = "application/json";
-      break;
-    default:
-      return NextResponse.json(
-        { error: "Unsupported feed format" },
-        { status: 404 }
-      );
-  }
+  const response = responseMap[format];
 
-  return new NextResponse(response, {
+  return new NextResponse(response.content, {
     headers: {
-      "Content-Type": contentType,
+      "Content-Type": response.contentType,
     },
   });
 }
