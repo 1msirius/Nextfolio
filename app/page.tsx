@@ -22,7 +22,7 @@ export default function Page() {
 
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          A clean, fast, and simple portfolio template built with Next.js,
+          A clean, fast, and lightweight portfolio template built with Next.js,
           Vercel, and Tailwind CSS for optimal performance.
         </p>
         <p>
