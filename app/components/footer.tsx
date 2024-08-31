@@ -29,7 +29,7 @@ function SocialLinks() {
       <SocialLink href={socialLinks.instagram} icon={FaInstagram} />
       <SocialLink href={socialLinks.linkedin} icon={FaLinkedinIn} />
       <SocialLink href={socialLinks.email} icon={TbMailFilled} />
-      <a href="/feed.xml" target="_self">
+      <a href="/rss.xml" target="_self">
         <FaRss />
       </a>
     </div>
