@@ -5,8 +5,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/feed.xml",
-        destination: "/feed/feed.xml",
+        source: "/rss.xml",
+        destination: "/feed/rss.xml",
       },
       {
         source: "/atom.xml",
@@ -14,6 +14,22 @@ const nextConfig = {
       },
       {
         source: "/feed.json",
+        destination: "/feed/feed.json",
+      },
+      {
+        source: "/rss",
+        destination: "/feed/rss.xml",
+      },
+      {
+        source: "/feed",
+        destination: "/feed/rss.xml",
+      },
+      {
+        source: "/atom",
+        destination: "/feed/atom.xml",
+      },
+      {
+        source: "/json",
         destination: "/feed/feed.json",
       },
     ];
