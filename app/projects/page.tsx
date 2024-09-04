@@ -1,7 +1,8 @@
 import React from "react";
+import type { Metadata } from "next";
 import { projects } from "./project-data";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Projects",
   description: "My Projects",
 };

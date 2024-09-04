@@ -1,7 +1,8 @@
 import React from "react";
+import type { Metadata } from "next";
 import { ImageGrid } from "app/components/image-grid";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Photos",
   description: "My Photos",
 };
