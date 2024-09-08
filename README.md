@@ -27,23 +27,17 @@ Deploy your Nextfolio site with Vercel in minutes.
 - **Captions**: Add descriptive captions to photos, tweets, and videos.
 - **Image Grid**: Easily showcase image galleries or photos.
 
-## Running Locally
+## Installation
 
-To run the website on your local machine, follow these steps:
-
-Ensure [pnpm](https://pnpm.io) is installed on your system. If not, follow the [instructions](https://pnpm.io/installation) on their website.
+Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
 
 ```
-# Download the website code with Git:
-git clone https://github.com/1msirius/Nextfolio.git
+pnpm create next-app --example https://github.com/1msirius/Nextfolio my-portfolio
+```
 
-# Navigate into the project directory:
-cd Nextfolio
+Start the development server
 
-# Install the dependencies:
-pnpm install
-
-# Start the development server:
+```
 pnpm dev
 ```
 
