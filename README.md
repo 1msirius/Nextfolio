@@ -35,7 +35,7 @@ Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packag
 pnpm create next-app --example https://github.com/1msirius/Nextfolio my-portfolio
 ```
 
-Start the development server
+Start the development server:
 
 ```
 pnpm dev
