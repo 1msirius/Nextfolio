@@ -25,27 +25,31 @@ export async function GET(
     );
   }
 
+  const BaseUrl = metaData.baseUrl.endsWith("/")
+    ? metaData.baseUrl
+    : `${metaData.baseUrl}/`;
+
   const feed = new Feed({
     title: metaData.title,
     description: metaData.description,
-    id: metaData.baseUrl,
-    link: metaData.baseUrl,
+    id: BaseUrl,
+    link: BaseUrl,
     copyright: `All rights reserved ${new Date().getFullYear()}, ${
       metaData.title
     }`,
     updated: new Date(),
     generator: "Feed for Node.js",
     feedLinks: {
-      json: `${metaData.baseUrl}/feed.json`,
-      atom: `${metaData.baseUrl}/atom.xml`,
-      rss: `${metaData.baseUrl}/rss.xml`,
+      json: `${BaseUrl}feed.json`,
+      atom: `${BaseUrl}atom.xml`,
+      rss: `${BaseUrl}rss.xml`,
     },
   });
 
   const allPosts = await getBlogPosts();
 
   allPosts.forEach((post) => {
-    const postUrl = `${metaData.baseUrl}/blog/${post.slug}`;
+    const postUrl = `${BaseUrl}blog/${post.slug}`;
     const categories = post.metadata.tags
       ? post.metadata.tags.split(",").map((tag) => tag.trim())
       : [];
