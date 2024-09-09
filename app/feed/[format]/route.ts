@@ -37,7 +37,6 @@ export async function GET(
     copyright: `All rights reserved ${new Date().getFullYear()}, ${
       metaData.title
     }`,
-    updated: new Date(),
     generator: "Feed for Node.js",
     feedLinks: {
       json: `${BaseUrl}feed.json`,
@@ -59,7 +58,10 @@ export async function GET(
       id: postUrl,
       link: postUrl,
       description: post.metadata.summary,
-      category: categories.map((cat) => ({ name: cat })),
+      category: categories.map((tag) => ({
+        name: tag,
+        term: tag,
+      })),
       date: new Date(post.metadata.publishedAt),
     });
   });
