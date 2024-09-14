@@ -61,9 +61,9 @@ export const socialLinks = {
 Adjust the routes to match your portfolio’s navigation in **app/sitemap.ts** file for SEO optimization:
 
 ```
-let routes = ['', '/blog', '/projects', '/photos'].map((route) => ({  // Update routes according to your portfolio navbar
-  url: `${baseUrl}${route}`,
-  lastModified: new Date().toISOString().split('T')[0],
+let routes = ["", "blog", "projects", "photos"].map((route) => ({ // Update routes according to your navbar
+  url: `${BaseUrl}${route}`,
+  lastModified: new Date().toISOString().split("T")[0],
 }));
 ```
 
