@@ -85,7 +85,7 @@ export default function Blog({ params }) {
           }),
         }}
       />
-      <h1 className="title mb-3 font-medium text-2xl tracking-tighter">
+      <h1 className="title mb-3 font-medium text-2xl tracking-tight">
         {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-medium">
