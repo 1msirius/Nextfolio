@@ -13,9 +13,9 @@ export async function generateStaticParams() {
 
 export async function GET(
   _: Request,
-  { params }: { params: { format: string } }
+  { params }: { params: Promise<{ format: string }> }
 ) {
-  const { format } = params;
+  const { format } = await params;
   const validFormats = ["rss.xml", "atom.xml", "feed.json"];
 
   if (!validFormats.includes(format)) {
