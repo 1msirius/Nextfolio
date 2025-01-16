@@ -15,20 +15,17 @@ export default function Page() {
           priority
         />
       </a>
-
       <h1 className="mb-8 text-2xl font-medium tracking-tight">
         Portfolio, made simple!
       </h1>
-
       <div className="prose prose-neutral dark:prose-invert">
         <p>
           A clean, fast, and lightweight portfolio template built with Next.js,
-          Vercel, and Tailwind CSS for optimal performance.
+          Vercel, and Tailwind CSS.
         </p>
         <p>
-          Nextfolio includes all the essentials for a stunning portfolio: SEO,
-          MDX support, RSS, Atom, & JSON feeds, analytics, tweet & YouTube
-          embeds, KaTeX integration, and{" "}
+          Nextfolio has everything you need for a portfolio: MDX blog, SEO, RSS,
+          Atom & JSON feeds, analytics, Tweet & YouTube embeds, KaTeX and {""}
           <a
             target="_blank"
             href="https://github.com/1msirius/Nextfolio?tab=readme-ov-file#features"
