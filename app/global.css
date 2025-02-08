@@ -39,7 +39,7 @@ html {
 }
 
 .prose {
-  @apply text-[#333333] dark:text-[#D4D4D4];
+  @apply text-[#000000] dark:text-[#FFFFFF];
 }
 
 .prose .anchor {
@@ -56,7 +56,7 @@ html {
 }
 
 .prose a {
-  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] font-normal text-[#333333] dark:text-[#D4D4D4];
+  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] font-normal text-[#000000] dark:text-[#FFFFFF];
 }
 
 .prose a:hover {
