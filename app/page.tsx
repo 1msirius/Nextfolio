@@ -16,7 +16,7 @@ export default function Page() {
         />
       </a>
       <h1 className="mb-8 text-2xl font-medium tracking-tight">
-        Portfolio, made simple!
+        Portfolio template!
       </h1>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
