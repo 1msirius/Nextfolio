@@ -1,8 +1,9 @@
 ---
-title: "Custom MDX Examples"
-publishedAt: "2024-08-11"
-summary: "Nextfolio custom MDX examples."
-tags: "Custom MDX, Web development"
+title: 'Custom MDX Examples'
+publishedAt: '2024-09-08'
+summary: 'Examples of custom MDX components for your Nextfolio site.'
+tags: 'MDX, Web development'
+hidden: true
 ---
 
 Nextfolio uses [custom MDX](https://github.com/1msirius/Nextfolio/blob/main/app/components/mdx.tsx) for blog posts, making it easy to include JSX components such as interactive embeds, charts, or alerts directly in your markdown content.
@@ -60,12 +61,7 @@ Nextfolio uses [Next.js Image](https://nextjs.org/docs/basic-features/image-opti
 
 Renders:
 
-<Image
-  src="/opengraph-image.png"
-  alt="OpenGraph image"
-  width={640}
-  height={500}
-/>
+<Image src="/opengraph-image.png" alt="OpenGraph image" width={640} height={500} />
 
 ## Image Grid
 
@@ -87,9 +83,9 @@ Renders:
 <ImageGrid
   columns={3}
   images={[
-    { src: "/photos/photo1.jpg", alt: "Photo1", href: "#" },
-    { src: "/photos/photo2.jpg", alt: "Photo2", href: "#" },
-    { src: "/photos/photo3.jpg", alt: "Photo3" },
+    { src: '/photos/photo1.jpg', alt: 'Photo1', href: '#' },
+    { src: '/photos/photo2.jpg', alt: 'Photo2', href: '#' },
+    { src: '/photos/photo3.jpg', alt: 'Photo3' },
   ]}
 />
 
@@ -133,8 +129,8 @@ Nextfolio uses [react-wrap-balancer](https://react-wrap-balancer.vercel.app/) to
 Renders:
 
 <Caption>
-  Captions that flow smoothly, making your content easy to read and visually
-  appealing with a clean look.
+  Captions that flow smoothly, making your content easy to read and visually appealing with a clean
+  look.
 </Caption>
 
 ## Tables
@@ -163,15 +159,15 @@ Renders:
 
 <Table
   data={{
-    headers: ["Title", "Description"],
+    headers: ['Title', 'Description'],
     rows: [
       [
-        "First item",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perspiciatis repellat amet quos.",
+        'First item',
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perspiciatis repellat amet quos.',
       ],
       [
-        "Second item",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perspiciatis repellat amet quos.",
+        'Second item',
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perspiciatis repellat amet quos.',
       ],
     ],
   }}
@@ -206,6 +202,6 @@ Nextfolio uses a custom [callout component](https://github.com/1msirius/Nextfoli
 Renders:
 
 <Callout emoji="💡">
-  [Nextfolio](https://nextfolio.site) is a clean, simple, and fast portfolio
-  built with Next.js, Tailwind CSS, and pnpm for optimal performance.
+  [Nextfolio](https://nextfolio.site) is a clean, simple, and fast portfolio built with Next.js,
+  Tailwind CSS, and pnpm for optimal performance.
 </Callout>
