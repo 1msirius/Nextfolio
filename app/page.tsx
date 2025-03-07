@@ -14,46 +14,35 @@ export default function Page() {
           priority
         />
       </a>
-      <h1 className="mb-8 text-2xl font-medium tracking-tight">Portfolio template!</h1>
+      <h1 className="mb-8 text-2xl font-medium tracking-tight">Hello, I'm Adithyan Ilangovan</h1>
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          A clean, fast, and lightweight portfolio template built with Next.js, Vercel, and Tailwind
-          CSS.
+          This is my personal blog where I share things I wish I had known earlier. I document my
+          musings, writings, and experiences. I like to distill what I learn into principles
+          because, as Ray Dalio puts it, life is a lot of "another one of those" - and distilling
+          principles makes things easier.
         </p>
         <p>
-          Nextfolio has everything you need for a portfolio: MDX blog, SEO, RSS, Atom & JSON feeds,
-          analytics, Tweet & YouTube embeds, KaTeX and {''}
-          <a
-            target="_blank"
-            href="https://github.com/1msirius/Nextfolio?tab=readme-ov-file#features"
-          >
-            more
-          </a>
-          .
+          I'm the founder of A.I. Podcasting, a bootstrap startup where our goal is to enable
+          podcasters to tell their stories without getting fuddled by all the technical processes
+          that come after they record their podcasts. We power this through AI-driven solutions.
         </p>
         <p>
-          Nextfolio is{' '}
-          <a href={socialLinks.github} target="_blank">
-            open-source
-          </a>{' '}
-          and fully customizable, making it easy to add more features.
+          Though not formally trained as an AI engineer, I got totally hooked when ChatGPT was
+          released. One of my friends sat me down and introduced me to it right when it launched.
+          Three or four months later, I quit my job to pursue AI, despite having no formal training.
+          I've been learning on the ropes ever since.
         </p>
         <p>
-          <a
-            href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio"
-            target="_blank"
-          >
-            Deploy
-          </a>{' '}
-          your Nextfolio site with Vercel in minutes and follow the set up instructions in the{' '}
-          <a href="/blog/getting-started">Getting Started</a> post.
+          You can think of me as an AI thinker rather than a researcher - someone who likes to
+          fiddle with the tools and explore practical applications. I'm passionate about blending
+          technology and creativity, particularly in making complex technical processes more
+          accessible.
         </p>
         <p>
-          Built and maintained by{' '}
-          <a href="https://imsirius.xyz/" target="_blank">
-            Sirius
-          </a>
-          .
+          I plan to write more regularly about AI, entrepreneurship, technology, and personal
+          growth. If you have thoughts or want to connect, please feel free to{' '}
+          <a href={socialLinks.email}>reach out</a>.
         </p>
       </div>
     </section>
