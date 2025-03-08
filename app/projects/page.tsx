@@ -22,7 +22,7 @@ export default function Projects() {
           >
             <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
               <h2 className="text-black dark:text-white">{project.title}</h2>
-              <p className="text-neutral-600 dark:text-neutral-400 tracking-tight">
+              <p className="text-neutral-600 dark:text-neutral-400 text-[15px]">
                 {project.description}
               </p>
             </div>
