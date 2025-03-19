@@ -7,6 +7,7 @@ const navItems = {
   "/projects": { name: "Projects" },
   "/photos": { name: "Photos" },
   "/music": { name: "Music" },
+  "/art": { name: "Art" },
 };
 
 export function Navbar() {
