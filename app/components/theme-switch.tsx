@@ -24,25 +24,24 @@ export const ThemeSwitch: React.FC = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
+  // Only run on client side
   React.useEffect(() => {
     setMounted(true);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
+  // During SSR and initial client render, return a placeholder
+  // This ensures server and client render the same content initially
   if (!mounted) {
     return (
-      <FaCircleHalfStroke
-        className="h-[14px] w-[14px] text-[#1c1c1c]"
-        aria-hidden="true"
-      />
+      <div className="w-[14px] h-[14px]" /> // Empty placeholder with same dimensions
     );
   }
 
   return (
-    <button onClick={toggleTheme} aria-label="Toggle theme">
+    <button 
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      aria-label="Toggle theme"
+    >
       <FaCircleHalfStroke
         className="h-[14px] w-[14px] text-[#1c1c1c] dark:text-white"
         aria-hidden="true"
