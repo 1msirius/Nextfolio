@@ -1,0 +1,86 @@
+---
+title: "Getting Started with Nextfolio"
+publishedAt: "2024-08-13"
+summary: "Instructions to build and configure your Nextfolio portfolio."
+tags: "Configuration, Web development"
+---
+
+Nextfolio includes all the essentials for a stunning portfolio website.
+
+Start by [deploying](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio) your portfolio with Vercel in minutes, or fork the [repository](https://github.com/1msirius/Nextfolio) and follow the instructions below to set it up.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio)
+
+## Installation
+
+Nextfolio uses [pnpm](https://pnpm.io/installation) for dependency management, so ensure it is installed on your system.
+
+Execute [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
+
+```
+pnpm create next-app --example https://github.com/1msirius/Nextfolio my-portfolio
+```
+
+Start the development server:
+
+```
+pnpm dev
+```
+
+The server will be running at [http://localhost:3000](http://localhost:3000).
+
+## Configuration
+
+Customize your Nextfolio setup by updating your information to ensure proper SEO, feed generation, Open Graph integration, and other settings.
+
+### Config.ts
+
+Update the site metadata and social links in the **app/config.ts** file. These constants are utilized across the site for SEO, feeds, social links, and Open Graph integration.
+
+```
+export const metaData = {
+  baseUrl: "https://nextfolio-template.vercel.app", // Update with your site base URL
+  title: "Nextfolio", // Update with your site title
+  name: "Sirius", // Update with your name
+  ogImage: "/opengraph-image.png", // Update with your Open Graph image
+  description:
+    "A clean, fast, and lightweight portfolio template built with Next.js, Vercel, and Tailwind CSS for optimal performance.", // Update with your site description
+};
+
+export const socialLinks = {
+  twitter: "https://x.com/1tssirius", // Update with your Twitter URL
+  github: "https://github.com/1msirius/Nextfolio", // Update with your GitHub URL
+  instagram: "https://www.instagram.com/", // Update with your Instagram URL
+  linkedin: "https://www.linkedin.com/", // Update with your LinkedIn URL
+  email: "mailto:example@gmail.com", // Update with your email address
+};
+```
+
+### Sitemap
+
+Adjust the routes to match your portfolio’s navigation in **app/sitemap.ts** file for SEO optimization:
+
+```
+let routes = ["", "blog", "projects", "photos"].map((route) => ({ // Update routes according to your navbar
+  url: `${BaseUrl}${route}`,
+  lastModified: new Date().toISOString().split("T")[0],
+}));
+```
+
+### Profile Photo
+
+Update your profile photo by replacing the **public/profile.png** file with your image.
+
+### Favicon
+
+Update your favicon by replacing the **public/favicon.ico** file with your custom icon.
+
+## Analytics
+
+Nextfolio uses [Vercel Web Analytics](https://vercel.com/docs/analytics/quickstart) and [Speed Insights](https://vercel.com/docs/speed-insights/quickstart) to monitor user interactions and website's performance. Simply deploy your site on Vercel and enable both features through the Vercel dashboard.
+
+## Ready!
+
+You're all set! Update your blog posts in the **/content** folder, add your project data in **app/project/projectdata.tsx**, and update your images in **app/photos/page.tsx**.
+
+Your portfolio is equipped with SEO, [RSS](/rss.xml), [Atom](/atom.xml), and [JSON](/feed.json) feeds, as well as analytics. Nextfolio is fully customizable, allowing you to add features as needed.
