@@ -1,16 +1,16 @@
 export const metaData = {
   baseUrl: "https://nextfolio-template.vercel.app/",
-  title: "Nextfolio",
-  name: "Sirius",
+  title: "Aaron Demby Jones",
+  name: "Aaron Demby Jones — Musician, Artist, Technologist",
   ogImage: "/opengraph-image.png",
   description:
-    "A clean, fast, and lightweight portfolio template built with Next.js, Vercel, and Tailwind CSS for optimal performance.",
+    "Music, Generative Art, and Creative Programming",
 };
 
 export const socialLinks = {
-  twitter: "https://x.com/1tssirius",
-  github: "https://github.com/1msirius/Nextfolio",
-  instagram: "https://www.instagram.com/",
-  linkedin: "https://www.linkedin.com/",
-  email: "mailto:example@gmail.com",
+  soundcloud: "https://soundcloud.com/aaron-demby-jones",
+  github: "https://github.com/aadjones",
+  instagram: "https://www.instagram.com/studio_demby",
+  linkedin: "https://www.linkedin.com/in/aaron-jones-3716431b7/",
+  email: "mailto:aaron.demby.jones@gmail.com",
 };
