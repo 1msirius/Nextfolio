@@ -4,7 +4,7 @@ import { socialLinks } from "./config";
 export default function Page() {
   return (
     <section>
-      <a href={socialLinks.twitter} target="_blank">
+      <a href={socialLinks.soundcloud} target="_blank">
         <Image
           src="/profile.png"
           alt="Profile photo"
