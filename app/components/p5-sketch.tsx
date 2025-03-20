@@ -3,22 +3,12 @@
 
 import React, { useRef, useEffect } from 'react';
 import p5 from 'p5';
-import dynamic from 'next/dynamic';
 
-// Create a dynamic component that imports itself
-const P5SketchClient = dynamic(() => import('./p5-sketch'), { ssr: false });
-
-// This is the main component that will be imported by the page
-export default function P5Sketch() {
-  return <P5SketchClient />;
-}
-
-// This is the actual sketch component that will be dynamically imported
-export function P5SketchComponent() {
+const P5Sketch = () => {
   const sketchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Define your p5 sketch
+    // Basic p5 sketch
     const sketch = (p: p5) => {
       p.setup = () => {
         p.createCanvas(400, 400);
@@ -26,19 +16,24 @@ export function P5SketchComponent() {
 
       p.draw = () => {
         p.background(220);
-        p.fill(255, 0, 0);
-        p.ellipse(p.width / 2, p.height / 2, 50, 50);
+        p.ellipse(p.width / 2, p.height / 2, 80, 80);
       };
     };
 
-    // Instantiate p5 with your sketch, attaching to the DOM element
-    const p5Instance = new p5(sketch, sketchRef.current as HTMLElement);
+    // Create new p5 instance
+    if (sketchRef.current) {
+      new p5(sketch, sketchRef.current);
+    }
 
-    // Cleanup on unmount
+    // Cleanup
     return () => {
-      p5Instance.remove();
+      if (sketchRef.current) {
+        sketchRef.current.innerHTML = '';
+      }
     };
   }, []);
 
   return <div ref={sketchRef}></div>;
-}
+};
+
+export default P5Sketch;
