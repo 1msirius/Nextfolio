@@ -7,9 +7,9 @@ import MDXContent from './mdx-content';
 export default async function ProjectPage({ 
   params 
 }: { 
-  params: { slug: string } // Still a plain object type
+  params: Promise<{ slug: string }> // Type params as a Promise
 }) {
-  const { slug } = await params; // Await params to satisfy Next.js 15+
+  const { slug } = await params; // Await the Promise to get the slug
   const projectData = await getProjectBySlug(slug);
   
   if (!projectData) return notFound();
