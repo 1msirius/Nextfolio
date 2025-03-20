@@ -81,7 +81,7 @@ function slugify(str) {
 }
 
 function createHeading(level) {
-  const Heading = ({ children }) => {
+  const Heading: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     let slug = slugify(children);
     return React.createElement(
       `h${level}`,
@@ -92,8 +92,8 @@ function createHeading(level) {
           key: `link-${slug}`,
           className: "anchor",
         }),
-      ],
-      children
+        children
+      ]
     );
   };
   Heading.displayName = `Heading${level}`;
