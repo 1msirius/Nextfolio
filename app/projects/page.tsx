@@ -1,34 +1,44 @@
-import Link from "next/link";
-import type { Metadata } from "next";
-import { getAllProjects } from "@/lib/mdx";
+// app/projects/[slug]/page.tsx
+import { notFound } from "next/navigation";
+import { JSX } from "react";
+import { getProjectBySlug, getAllProjects } from "@/lib/mdx";
+import { CustomMDX } from "@/app/components/mdx";
+import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "Projects",
-  description: "My Portfolio Projects",
-};
+interface Props {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
 
-export default async function Projects() {
-  const projects = await getAllProjects();
+export default async function ProjectPage({ params, searchParams }: Props): Promise<JSX.Element> {
+  const projectData = await getProjectBySlug(params.slug);
+  if (!projectData) return notFound();
+
+  const { mdxSource, frontMatter } = projectData;
 
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-medium tracking-tight">Projects</h1>
-      <div className="grid grid-cols-1 gap-8">
-        {projects.map((project) => (
-          <div key={project.slug} className="mb-5">
-            <Link href={`/projects/${project.slug}`}>
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
-                <h2 className="text-black dark:text-white hover:text-blue-500 dark:hover:text-blue-400">
-                  {project.title}
-                </h2>
-                <p className="text-neutral-600 dark:text-neutral-400 text-[15px]">
-                  {project.summary}
-                </p>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </section>
+    <div className="container mx-auto px-4 py-8">
+      {/* Teaser Image */}
+      {frontMatter.image && (
+        <div className="mb-4">
+          <Image
+            src={frontMatter.image}
+            alt={frontMatter.title}
+            width={800}      // Adjust dimensions as needed
+            height={600}
+            className="object-cover"
+          />
+        </div>
+      )}
+      {/* Render the MDX content */}
+      <CustomMDX {...mdxSource} />
+    </div>
   );
+}
+
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const projects = await getAllProjects();
+  return projects.map((project: { slug: string }) => ({
+    slug: project.slug,
+  }));
 }

@@ -6,6 +6,7 @@ export interface MDXProject {
   category: string;
   tags: string;
   isFeatured: boolean;
+  image?: string;
 }
 
 export type MDXSource = {

@@ -1,5 +1,6 @@
 // app/page.tsx
 import Link from "next/link";
+import Image from "next/image";
 import { getAllProjects } from "@/lib/mdx";
 import { MDXProject } from "@/types/mdx";
 
@@ -11,13 +12,24 @@ export default async function HomePage() {
     <main className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8">Aaron Demby Jones</h1>
       <p className="text-xl mb-12">
-        Artist & Technologist exploring music improvisation, generative art, and creative programming.
+        Artist &amp; Technologist exploring music improvisation, generative art, and creative programming.
       </p>
 
       <h2 className="text-2xl font-semibold mb-6">Featured Work</h2>
       <div className="space-y-8">
         {featuredProjects.map((project) => (
           <div key={project.slug}>
+            {project.image && (
+              <Link href={`/projects/${project.slug}`}>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={400}      // adjust as needed
+                  height={400}     // adjust as needed
+                  className="object-cover cursor-pointer"
+                />
+              </Link>
+            )}
             <Link href={`/projects/${project.slug}`}>
               <h3 className="text-xl font-medium hover:underline cursor-pointer">
                 {project.title}
