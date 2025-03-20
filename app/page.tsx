@@ -16,26 +16,27 @@ export default async function HomePage() {
       </p>
 
       <h2 className="text-2xl font-semibold mb-6">Featured Work</h2>
-      <div className="space-y-8">
+      {/* Use Tailwind grid classes for a responsive layout */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {featuredProjects.map((project) => (
-          <div key={project.slug}>
+          <div key={project.slug} className="flex flex-col">
             {project.image && (
               <Link href={`/projects/${project.slug}`}>
                 <Image
                   src={project.image}
                   alt={project.title}
-                  width={400}      // adjust as needed
-                  height={400}     // adjust as needed
-                  className="object-cover cursor-pointer"
+                  width={400} // adjust as needed
+                  height={400} // adjust as needed
+                  className="object-cover cursor-pointer rounded-md"
                 />
               </Link>
             )}
             <Link href={`/projects/${project.slug}`}>
-              <h3 className="text-xl font-medium hover:underline cursor-pointer">
+              <h3 className="text-xl font-medium hover:underline cursor-pointer mt-4">
                 {project.title}
               </h3>
             </Link>
-            <p className="italic text-gray-600">{project.summary}</p>
+            <p className="italic text-gray-600 mt-2">{project.summary}</p>
           </div>
         ))}
       </div>
