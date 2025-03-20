@@ -1,17 +1,16 @@
-// Keep this as a server component (no 'use client')
+// app/projects/[slug]/page.tsx
 import React from 'react';
 import { notFound } from "next/navigation";
 import { getProjectBySlug } from "../../../lib/mdx";
-import MDXContent from './mdx-content'; // Remove the .tsx extension
+import MDXContent from './mdx-content';
 
 export default async function ProjectPage({ 
   params 
 }: { 
-  params: Promise<{ slug: string }> | { slug: string }
+  params: { slug: string } // Still a plain object type
 }) {
-  // Await the params if it's a promise
-  const resolvedParams = await Promise.resolve(params);
-  const projectData = await getProjectBySlug(resolvedParams.slug);
+  const { slug } = await params; // Await params to satisfy Next.js 15+
+  const projectData = await getProjectBySlug(slug);
   
   if (!projectData) return notFound();
 

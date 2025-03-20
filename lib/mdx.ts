@@ -20,10 +20,10 @@ export async function getProjectBySlug(slug: string) {
   return { mdxSource, frontMatter: data as MDXProject };
 }
 
-export function getAllProjects(): MDXProject[] {
+export async function getAllProjects(): Promise<MDXProject[]> {
   const fileNames = fs.readdirSync(projectsDirectory);
 
-  return fileNames.map((fileName) => {
+  const projects = fileNames.map((fileName) => {
     const slug = fileName.replace(/\.mdx$/, "");
     const fullPath = path.join(projectsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -31,4 +31,6 @@ export function getAllProjects(): MDXProject[] {
 
     return { slug, ...data } as MDXProject;
   });
+
+  return projects;
 }
