@@ -10,6 +10,13 @@ import { ImageGrid } from "./image-grid";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import "katex/dist/katex.min.css";
+import ProjectIntro from "./project-intro";
+import ProjectOverview from "./project-overview";
+import MediaSection from "./media-section";
+import MediaItem from "./media-item";
+import TechnicalDetails from "./technical-details";
+import CallToAction from "./call-to-action";
+import { ZoomImage } from "./ZoomImage";
 
 function CustomLink(props) {
   let href = props.href;
@@ -117,6 +124,13 @@ let components = {
   Table,
   del: Strikethrough,
   Callout,
+  ProjectIntro,
+  ProjectOverview,
+  MediaSection,
+  MediaItem,
+  TechnicalDetails,
+  CallToAction,
+  ZoomImage,
 };
 
 export function CustomMDX(props) {

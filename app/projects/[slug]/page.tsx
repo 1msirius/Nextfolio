@@ -1,17 +1,14 @@
 // app/projects/[slug]/page.tsx
-import React from 'react';
 import { notFound } from "next/navigation";
-import { getProjectBySlug } from "../../../lib/mdx";
+import { getProjectBySlug } from "../../../lib/mdx"; // Verify this path matches your project structure
 import MDXContent from './mdx-content';
 
 export default async function ProjectPage({ 
   params 
 }: { 
-  params: Promise<{ slug: string }> // Type params as a Promise
+  params: { slug: string } 
 }) {
-  const { slug } = await params; // Await the Promise to get the slug
-  const projectData = await getProjectBySlug(slug);
-  
+  const projectData = await getProjectBySlug(params.slug); // Use params.slug directly
   if (!projectData) return notFound();
 
   const { mdxSource, frontMatter } = projectData;
