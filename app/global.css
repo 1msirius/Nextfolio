@@ -22,17 +22,18 @@
 
 /* Dark theme colors */
 .dark {
-  background-color: #121212;
-  --sh-class: #4c97f8;
-  --sh-identifier: white;
-  --sh-sign: #8996a3;
-  --sh-string: #0fa295;
-  --sh-keyword: #f47067;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
-  --sh-property: #e25a1c;
-  --sh-entity: #e25a1c;
+  background-color: #282c34;
+  --sh-class:        #61afef;
+  --sh-identifier:   #e5c07b;
+  --sh-sign:         #56b6c2;
+  --sh-string:       #98c379;
+  --sh-keyword:      #c678dd;
+  --sh-comment:      #5c6370;
+  --sh-jsxliterals:  #e06c75;
+  --sh-property:     #d19a66;
+  --sh-entity:       #d19a66;
 }
+
 
 html {
   min-width: 360px;
