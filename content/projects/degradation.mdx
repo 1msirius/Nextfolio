@@ -1,0 +1,24 @@
+---
+title: "Degradation"
+slug: "degradation"
+summary: "Controlled chaotic melting via iterative image‑to‑image diffusion."
+category: "experiments"
+isFeatured: false
+image: "/photos/crows.gif"
+---
+
+import ZoomImage from "@/components/ZoomImage"
+
+<ProjectOverview>
+These animations start from a single text‑to‑image prompt that generates a base frame. Each subsequent frame runs through an image‑to‑image diffusion pipeline — reconditioning on the same prompt while gradually injecting noise. The result is a controlled, chaotic melting: a visual degradation that blurs the boundary between creation and entropy.
+</ProjectOverview>
+
+<MediaSection title="Examples">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+    <ZoomImage src="/photos/crows.gif" alt="Degradation — Crows" />
+    <ZoomImage src="/photos/piano-melt.gif" alt="Degradation — Piano Melt" />
+    <ZoomImage src="/photos/electricity.gif" alt="Degradation — Electricity" />
+  </div>
+</MediaSection>
+
+<CallToAction email="aaron.demby.jones@gmail.com" />

@@ -46,7 +46,7 @@ export default async function HomePage() {
         <div className="flex space-x-4">
           <Link href="/music">Music</Link>
           <Link href="/art">Art</Link>
-          <Link href="/programming">Programming</Link>
+          <Link href="/experiments">Experiments</Link>
         </div>
       </div>
     </main>
