@@ -11,6 +11,7 @@ import ProjectIntro from "../../components/project-intro";
 import ProjectOverview from "../../components/project-overview";
 import TechnicalDetails from "../../components/technical-details";
 import { ZoomImage } from "../../components/ZoomImage";
+import { CaptionComponent } from "../../components/caption";
 
 const components = {
   YouTube: YouTubeComponent,
@@ -24,6 +25,7 @@ const components = {
   ProjectOverview,
   TechnicalDetails,
   ZoomImage,
+  Caption: CaptionComponent,
 };
 
 interface MDXContentProps {
