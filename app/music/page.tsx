@@ -1,7 +1,7 @@
 // app/music/page.tsx
 import Link from "next/link";
 import Image from "next/image";
-import { getAllProjects } from "@/lib/mdx";
+import { getAllProjects } from "@/lib/projects_mdx";
 
 export default async function MusicPage() {
   const all = await getAllProjects();

@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
 };
 
-const cx = (...classes) => classes.filter(Boolean).join(" ");
+const cx = (...classes: string[]) => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
   children,
@@ -63,6 +63,8 @@ export default function RootLayout({
           href="/atom.xml"
           title="Atom Feed"
         />
+        {/* Load p5 globally so that window.p5 is available */}
+        <script src="/p5.min.js" defer />
       </head>
       <body className="antialiased flex flex-col items-center justify-center mx-auto mt-2 lg:mt-8 mb-20 lg:mb-40">
         <ThemeProvider

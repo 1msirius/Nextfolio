@@ -1,0 +1,32 @@
+---
+title: "Spatial Synthesizer"
+slug: "spatial_synthesizer"
+summary: "Applying audio modulation concepts to spatial frequencies."
+category: "art"
+isFeatured: false
+image: "/photos/spatial_synthesizer.png"
+---
+
+import ProjectOverview from '@/app/components/ProjectOverview';
+import MediaSection from '@/app/components/MediaSection';
+import MediaItem from '@/app/components/MediaItem';
+import SpatialSynthesizerSketch from '@/app/components/SpatialSynthesizerSketch';
+import CallToAction from '@/app/components/CallToAction';
+
+<ProjectOverview>
+FM (frequency modulation) and AM (amplitude modulation) are common audio synthesis techniques—where one waveform modulates another to create complex timbres. Spatial Synthesizer applies the same principle to space, treating spatial frequencies (via 2D/3D Fourier transforms) as the source of modulation. Adjust knobs to control spatial frequency, modulation index, and amplitude, producing dynamic, evolving visual patterns.
+</ProjectOverview>
+
+<MediaSection title="Interactive Prototype">
+  <MediaItem
+    title="Spatial Synthesizer"
+    description="Use the GUI to tweak spatial modulation parameters in real time."
+  >
+    <SpatialSynthesizerSketch />
+    
+  </MediaItem>
+</MediaSection>
+
+
+
+<CallToAction email="aaron.demby.jones@gmail.com" />

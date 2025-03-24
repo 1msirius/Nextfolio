@@ -1,7 +1,7 @@
 // app/page.tsx
 import Link from "next/link";
 import Image from "next/image";
-import { getAllProjects } from "@/lib/mdx";
+import { getAllProjects } from "@/lib/projects_mdx";
 import { MDXProject } from "@/types/mdx";
 
 export default async function HomePage() {
