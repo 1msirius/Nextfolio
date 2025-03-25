@@ -4,7 +4,7 @@ export const metaData = {
   name: 'Adithyan Ilangovan',
   ogImage: '/opengraph-image.png',
   description:
-    'My personal blog where I share things I wish I had known earlier. I document my musings, writings, and experiences as an entrepreneur and AI enthusiast.',
+    'My personal blog where I share things I wish I had known earlier. I document my musings, writings, and experiences.',
 }
 
 export const socialLinks = {
