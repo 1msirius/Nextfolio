@@ -1,7 +1,7 @@
 export const metaData = {
   baseUrl: 'https://adithyan.io/',
-  title: 'Adithyan Ilangovan',
-  name: 'Adithyan Ilangovan',
+  title: 'Adithyan',
+  name: 'Adithyan',
   ogImage: '/opengraph-image.png',
   description:
     'My personal blog where I share things I wish I had known earlier. I document my musings, writings, and experiences.',
