@@ -1,0 +1,33 @@
+name: Auto-generate Documentation
+
+# This workflow automatically generates documentation for the codebase
+# It runs when changes are pushed to main (including when PRs are merged)
+# The workflow uses an LLM to analyze code and create documentation
+# It skips running when changes are made to the docs directory to prevent infinite loops.
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+
+# Add permissions to allow pushing documentation changes
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    # Uses a reusable workflow from the organization's .github repository
+    # This centralizes the documentation generation logic for consistency across repos
+    uses: wisdom-in-a-nutshell/.github/.github/workflows/generate-docs.yml@main
+
+    with:
+      # Specifies the runner environment for the documentation generation
+      run-on: ubuntu-latest
+
+    secrets:
+      # API key for the Language Learning Model service used for documentation generation
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+
+      # Endpoint URL for the LLM API service
+      LLM_API_ENDPOINT: ${{ secrets.LLM_API_ENDPOINT }}

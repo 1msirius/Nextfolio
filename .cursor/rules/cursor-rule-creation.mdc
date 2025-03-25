@@ -1,0 +1,184 @@
+---
+description: Guidelines for creating effective Cursor rules that help developers understand and follow codebase patterns
+globs:
+alwaysApply: false
+---
+
+
+## Rule Location and Organization
+
+### Directory Structure
+All cursor rules MUST be stored in the `.cursor/rules` directory:
+
+```
+.cursor/
+└── rules/
+    ├── api-implementation.mdc
+    ├── server-startup-monitoring.mdc
+    ├── frontend-implementation-guide.mdc
+    └── cursor-rule-creation.mdc
+```
+
+### File Naming
+- Use kebab-case for file names
+- Always use the `.mdc` extension
+- Names should be descriptive and indicate the rule's purpose
+
+# Writing Effective Cursor Rules
+
+This meta-rule provides guidance on creating cursor rules that help document code patterns, architecture decisions, and best practices for your codebase.
+
+## What is a Cursor Rule?
+
+Cursor rules are documentation files that Cursor AI can access to understand your project's specific patterns and requirements. They serve as knowledge bases that help maintain consistency across your codebase.
+
+## Rule Structure
+
+A well-structured cursor rule should include the following elements:
+
+### 1. YAML Frontmatter
+
+```yaml
+---
+description: Guidelines for what this rule covers and its purpose in a standardized format
+globs:
+alwaysApply: false
+---
+```
+
+- **description**: A concise description starting with "Guidelines for..." that explains the rule's purpose
+- **globs**: File pattern(s) that should trigger this rule (leave empty if not needed)
+- **alwaysApply**: Whether the rule should be applied automatically (typically false)
+
+### 2. Introduction Section
+
+Start with a brief overview that explains:
+- What problem this rule addresses
+- Why following this pattern is important
+- When developers should apply this pattern
+
+### 3. Pattern Description
+
+Clearly document the recommended pattern(s):
+- Explain the structure using both text and code examples
+- Highlight key components and their relationships
+- Include real file references from your codebase when possible
+- Use diagrams or structured lists to illustrate complex relationships
+
+### 4. Implementation Steps
+
+Provide a step-by-step guide for implementing the pattern:
+- Ordered list of actions to take
+- Decision points clearly identified
+- Prerequisites or dependencies mentioned
+
+### 5. Real-World Examples
+
+Include examples from your actual codebase:
+- Link to real files (using relative paths)
+- Highlight the most important parts of the examples
+- Explain why these examples demonstrate best practices
+- Consider "before and after" examples for clarity
+
+### 6. Common Pitfalls
+
+Document known issues or anti-patterns:
+- Problems that commonly arise
+- How to recognize them
+- How to fix or avoid them
+
+## Best Practices for Writing Rules
+
+### Be Specific and Actionable
+
+✅ DO:
+- Provide concrete examples
+- Link to actual files in the codebase
+- Give specific step-by-step instructions
+
+❌ DON'T:
+- Use vague language like "appropriately" or "properly"
+- Assume knowledge without providing references
+- Include personal opinions without justification
+
+### Focus on Patterns, Not Individual Issues
+
+Rules should document patterns that apply across multiple files or components, not fix individual bugs or issues.
+
+### Keep Rules Updated
+
+As your codebase evolves, keep your rules updated:
+- Review rules regularly when patterns change
+- Remove outdated rules
+- Update examples to reflect current code
+
+### Use Clear, Consistent Formatting
+
+- Use markdown headings consistently (H1 for title, H2 for major sections, H3 for subsections)
+- Format code blocks with appropriate language tags
+- Use bullet points and numbered lists for clarity
+- Bold or italicize important points for emphasis
+
+## Example Rule Structure
+
+Below is a simplified template for a cursor rule:
+
+```markdown
+---
+description: Guidelines for styling React components using CSS Modules for consistent appearance
+globs:
+alwaysApply: false
+---
+
+# Component Styling Pattern
+
+This rule documents our approach to styling React components using CSS Modules.
+
+## Overview
+
+We use CSS Modules to scope styles to specific components, preventing style leakage and naming conflicts.
+
+## Directory Structure
+
+Components with styles should follow this structure:
+
+```
+components/
+└── Button/
+    ├── Button.tsx
+    ├── Button.module.css
+    └── index.ts
+```
+
+## Implementation Steps
+
+1. Create a component directory with the component name
+2. Create the component file (ComponentName.tsx)
+3. Create a CSS module file with the same name (ComponentName.module.css)
+4. Create an index.ts file that exports the component
+
+## Real-World Examples
+
+See our Button component implementation:
+- [components/Button/Button.tsx](mdc:../src/components/Button/Button.tsx)
+- [components/Button/Button.module.css](mdc:../src/components/Button/Button.module.css)
+
+## Common Pitfalls
+
+- Don't mix global styles with module styles
+- Avoid deeply nested selectors
+- Don't use !important in module styles
+```
+
+## Real Example from Your Codebase
+
+The API Implementation rule we created is a good example of a well-structured rule:
+
+- It has clear YAML frontmatter with title, description, and glob pattern
+- The overview explains the job-based architecture and its importance
+- It documents multiple patterns with clear explanations
+- It includes real-world examples from your codebase
+- It lists common pitfalls to avoid
+- It has a step-by-step implementation guide
+
+By following these guidelines, you'll create cursor rules that effectively document your codebase patterns and help all developers maintain consistency.

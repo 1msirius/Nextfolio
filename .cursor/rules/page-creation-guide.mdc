@@ -1,0 +1,210 @@
+---
+description: Guidelines for creating standardized pages in Next.js App Router structure with proper metadata, docstrings, and consistent styling
+globs: 
+alwaysApply: false
+---
+
+# Next.js Page Creation Pattern
+
+This rule documents our standardized approach to creating new pages in the Next.js blog using App Router.
+
+## Overview
+
+We follow a consistent pattern for creating new pages to ensure maintainability, proper SEO, and consistent user experience. Each page should be properly documented with TypeScript docstrings and include appropriate metadata.
+
+## Directory Structure
+
+All pages should follow the App Router directory structure:
+
+```
+app/
+├── page.tsx           # Homepage
+├── layout.tsx         # Root layout
+├── about/
+│   └── page.tsx       # About page (/about)
+├── blog/
+│   ├── page.tsx       # Blog index page (/blog)
+│   └── [slug]/        # Dynamic blog post routes
+│       └── page.tsx   # Individual blog post (/blog/post-slug)
+└── ...
+```
+
+## Page Component Structure
+
+Every page should follow this basic structure:
+
+```tsx
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { socialLinks, metaData } from '../config'
+
+/**
+ * Metadata for the page
+ *
+ * Defines SEO-related information including title, description, and OpenGraph data
+ */
+export const metadata: Metadata = {
+  title: 'Page Title',
+  description: 'Concise description of the page content.',
+  openGraph: {
+    title: 'Page Title | Site Name',
+    description: 'Concise description of the page content.',
+  },
+}
+
+/**
+ * PageName component
+ *
+ * Brief description of what this page displays and its purpose
+ *
+ * @returns {JSX.Element} The rendered page
+ */
+export default function PageName() {
+  return (
+    <section>
+      <h1 className="mb-8 text-2xl font-medium tracking-tight">Page Title</h1>
+      <div className="prose prose-neutral dark:prose-invert">
+        {/* Page content goes here */}
+      </div>
+    </section>
+  )
+}
+```
+
+## Implementation Steps
+
+1. **Create the directory structure**
+   ```bash
+   mkdir -p app/page-name
+   ```
+
+2. **Create the page.tsx file**
+   Create a `page.tsx` file in the new directory with the structure shown above.
+
+3. **Add metadata**
+   Define metadata for SEO optimization including title, description, and OpenGraph properties.
+
+4. **Add comprehensive docstrings**
+   Add TypeScript docstrings to the component and any functions it contains.
+
+5. **Update navigation (if needed)**
+   If the page should be accessible from the main navigation, update `app/components/nav.tsx`:
+   ```tsx
+   const navItems = {
+     '/about': { name: 'About' },
+     '/blog': { name: 'Blog' },
+     '/page-name': { name: 'Page Name' },  // Add new page here
+     // ...other pages
+   };
+   ```
+
+## Real-World Examples
+
+See our existing page implementations:
+
+### Homepage (Simple Page with Link to Detailed Page)
+```tsx
+// app/page.tsx
+export default function Page() {
+  return (
+    <section>
+      <a href={socialLinks.twitter} target="_blank">
+        <Image
+          src="/profile.png"
+          alt="Profile photo"
+          className="rounded-full bg-gray-100 block lg:mt-5 mt-0 lg:mb-5 mb-10 mx-auto sm:float-right sm:ml-5 sm:mb-5 grayscale hover:grayscale-0 border border-neutral-200 dark:border-neutral-700 p-1"
+          width={160}
+          height={160}
+          priority
+        />
+      </a>
+      <h1 className="mb-8 text-2xl font-medium tracking-tight">Hello, I'm Adithyan Ilangovan</h1>
+      <div className="prose prose-neutral dark:prose-invert">
+        <p>
+          Welcome to my personal blog where I share things I wish I had known earlier. I'm the
+          founder of A.I. Podcasting, a bootstrap startup that uses AI to help podcasters tell their
+          stories without technical complications. I'm passionate about AI, entrepreneurship, and
+          making complex technical processes more accessible.
+        </p>
+        <p>
+          <Link
+            href="/about"
+            className="font-medium text-neutral-800 dark:text-neutral-200 hover:underline"
+          >
+            Read more about me →
+          </Link>
+        </p>
+      </div>
+    </section>
+  )
+}
+```
+
+### About Page (Detailed Content Page)
+```tsx
+// app/about/page.tsx
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'About Adithyan Ilangovan, founder of A.I. Podcasting and AI enthusiast.',
+  openGraph: {
+    title: 'About | Adithyan',
+    description: 'About Adithyan Ilangovan, founder of A.I. Podcasting and AI enthusiast.',
+  },
+}
+
+export default function AboutPage() {
+  return (
+    <section>
+      <h1 className="mb-8 text-2xl font-medium tracking-tight">About Me</h1>
+      <div className="prose prose-neutral dark:prose-invert">
+        {/* Detailed content */}
+        <h2>Professional Background</h2>
+        <p>...</p>
+
+        <h2>Current Focus</h2>
+        <p>...</p>
+
+        <h2>Connect With Me</h2>
+        <p>...</p>
+      </div>
+    </section>
+  )
+}
+```
+
+## Common Pitfalls
+
+### ❌ Avoid These Mistakes
+
+1. **Missing metadata**
+   Always include metadata for SEO optimization.
+
+2. **Missing docstrings**
+   Add comprehensive docstrings to explain the purpose of the page and how it fits into the site.
+
+3. **Inconsistent styling**
+   Follow the existing style patterns (typography, spacing, etc.) for visual consistency.
+
+4. **Hard-coded links**
+   Use the `Link` component from Next.js for internal links to enable client-side navigation.
+
+5. **Incomplete image configuration**
+   Always include `alt`, `width`, `height`, and appropriate `className` attributes for images.
+
+### ✅ Best Practices
+
+1. **Keep content well-structured**
+   Use appropriate heading levels (h1, h2, h3) to maintain content hierarchy.
+
+2. **Optimize for responsive design**
+   Ensure your page looks good on all screen sizes using the existing Tailwind classes.
+
+3. **Consider dark mode**
+   Use the `dark:` variant classes to ensure your page looks good in both light and dark modes.
+
+4. **Add proper navigation**
+   Make sure the page is accessible through the site's navigation or linked from relevant pages.
+
+5. **Use proper image optimization**
+   Use Next.js `Image` component instead of HTML `img` tag for automatic optimization.
