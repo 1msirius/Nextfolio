@@ -22,7 +22,13 @@ function parseFrontmatter(fileContent: string) {
     let [key, ...valueArr] = line.split(': ')
     let value = valueArr.join(': ').trim()
     value = value.replace(/^['"](.*)['"]$/, '$1')
-    metadata[key.trim() as keyof Metadata] = value
+
+    // Handle boolean values
+    if (key.trim() === 'hidden') {
+      metadata[key.trim() as keyof Metadata] = (value === 'true') as any
+    } else {
+      metadata[key.trim() as keyof Metadata] = value as any
+    }
   })
 
   return { metadata: metadata as Metadata, content }
