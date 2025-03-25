@@ -41,14 +41,16 @@ A well-structured cursor rule should include the following elements:
 ```yaml
 ---
 title: Brief Title of the Rule
-description: Concise description of what this rule covers and its purpose
+description: Guidelines for what this rule covers and its purpose in a standardized format
 glob: "pattern/to/match/relevant/files/**/*.{ext}"
+alwaysApply: true
 ---
 ```
 
 - **title**: A clear, descriptive title (5-7 words)
-- **description**: A 1-2 sentence description of the rule's purpose
-- **glob**: File pattern(s) that should trigger this rule. Use multiple patterns if needed
+- **description**: A concise description starting with "Guidelines for..." that explains the rule's purpose
+- **glob**: File pattern(s) that should trigger this rule
+- **alwaysApply**: Set to true to have this rule applied automatically when relevant files are opened
 
 ### 2. Introduction Section
 
@@ -126,8 +128,9 @@ Below is a simplified template for a cursor rule:
 ```markdown
 ---
 title: Component Styling Pattern
-description: Guidelines for styling React components using CSS Modules
+description: Guidelines for styling React components using CSS Modules for consistent appearance
 glob: "**/*.{tsx,jsx,css}"
+alwaysApply: true
 ---
 
 # Component Styling Pattern
