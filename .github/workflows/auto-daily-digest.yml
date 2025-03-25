@@ -1,0 +1,46 @@
+name: Auto Daily Documentation Digest
+
+# This workflow automatically generates a daily digest of documentation changes
+# It uses a centralized reusable workflow from the .github repository
+# The workflow uses an LLM to summarize the day's documentation changes
+
+on:
+  # Add schedule trigger for automatic daily runs
+  schedule:
+    # Run at 10:00 PM UTC (22:00 UTC)
+    # This is 11:00 PM Berlin time (CET) during standard time
+    # or 12:00 AM Berlin time (CEST) during daylight saving time
+    - cron: '0 22 * * *'
+
+  # Allow manual triggering for testing in each repository
+  workflow_dispatch:
+    inputs:
+      test_date:
+        description: 'Test with specific date (YYYY-MM-DD format, leave empty for today)'
+        required: false
+        default: ''
+      test_mode:
+        description: 'Run in test mode (skips pushing changes)'
+        type: boolean
+        default: true
+
+# Add permissions to allow pushing documentation changes
+permissions:
+  contents: write
+
+jobs:
+  daily-digest:
+    # Uses a reusable workflow from the organization's .github repository
+    # This centralizes the digest generation logic for consistency across repos
+    uses: wisdom-in-a-nutshell/.github/.github/workflows/daily-digest.yml@main
+
+    with:
+      # Specifies the runner environment for the digest generation
+      run-on: ubuntu-latest
+      # Input parameter is optional and only needed if not using LLM_API_ENDPOINT secret
+      # openai_endpoint: optional-fallback-endpoint-url
+
+    secrets:
+      # Make sure to add these secrets to your repository or organization
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      LLM_API_ENDPOINT: ${{ secrets.LLM_API_ENDPOINT }}

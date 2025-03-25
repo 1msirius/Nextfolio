@@ -1,12 +1,13 @@
-import Link from "next/link";
-import { ThemeSwitch } from "./theme-switch";
-import { metaData } from "../config";
+import Link from 'next/link'
+import { metaData } from '../config'
+import { ThemeSwitch } from './theme-switch'
 
 const navItems = {
-  "/blog": { name: "Blog" },
-  "/projects": { name: "Projects" },
-  "/photos": { name: "Photos" },
-};
+  '/about': { name: 'About' },
+  '/blog': { name: 'Blog' },
+  '/projects': { name: 'Projects' },
+  '/photos': { name: 'Photos' },
+}
 
 export function Navbar() {
   return (
@@ -31,5 +32,5 @@ export function Navbar() {
         </div>
       </div>
     </nav>
-  );
+  )
 }
