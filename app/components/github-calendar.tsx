@@ -8,8 +8,7 @@ import GitHubCalendar from 'react-github-calendar'
  * GitHub calendar component
  *
  * A client component that displays GitHub contribution activity
- * with proper dark/light theme support, responsive design,
- * and error handling
+ * with enhanced readability and full-width display
  *
  * @returns {JSX.Element | null} The GitHub calendar with proper theme or null during initialization
  */
@@ -64,11 +63,10 @@ export default function GithubCalendar() {
   const isMobile = useMediaQuery('(max-width: 640px)')
   const isTablet = useMediaQuery('(max-width: 768px)')
 
-  // Adjust sizes based on screen size
-  const blockSize = isMobile ? 7 : isTablet ? 8 : 9
-  const blockMargin = isMobile ? 1 : 2
-  const fontSize = isMobile ? 9 : 11
-  const hideMonthLabels = isMobile
+  // Adjust sizes based on screen size but keep it compact
+  const blockSize = isMobile ? 8 : isTablet ? 9 : 10 // Slightly larger blocks
+  const blockMargin = 2 // Consistent margin
+  const fontSize = isMobile ? 11 : 12 // Slightly larger font
 
   // Check if cached data is fresh or needs refresh
   useEffect(() => {
@@ -149,15 +147,15 @@ export default function GithubCalendar() {
   }
 
   return (
-    <div className="overflow-hidden max-w-full">
+    <div className="overflow-visible w-full">
       {loading ? (
         <div className="animate-pulse flex space-x-4">
-          <div className="flex-1 space-y-4 py-1">
-            <div className="h-40 bg-gray-200 dark:bg-gray-700 rounded"></div>
+          <div className="flex-1 space-y-4">
+            <div className="h-44 bg-gray-200 dark:bg-gray-700"></div>
           </div>
         </div>
       ) : (
-        <div className="p-3 bg-gray-50 dark:bg-neutral-800 rounded-lg">
+        <div className="pl-1">
           <GitHubCalendar
             username="AdithyanI"
             colorScheme={resolvedTheme === 'dark' ? 'dark' : 'light'}
@@ -165,14 +163,17 @@ export default function GithubCalendar() {
             blockMargin={blockMargin}
             fontSize={fontSize}
             hideColorLegend={false}
-            hideMonthLabels={hideMonthLabels}
+            hideMonthLabels={false}
             labels={{
               totalCount: '{{count}} contributions in the last year',
             }}
             style={{
-              margin: '0 auto',
               width: '100%',
               maxWidth: '100%',
+              color: resolvedTheme === 'dark' ? '#e5e5e5' : '#262626', // Better text contrast
+              height: 'auto', // Allow natural height
+              lineHeight: '1.5', // Better text spacing
+              marginLeft: '-4px', // Adjust for text alignment
             }}
           />
         </div>
