@@ -1,0 +1,148 @@
+---
+description: Guidelines for consistent coding style, file naming, and structure across the codebase
+globs:
+alwaysApply: true
+---
+
+# Coding Conventions
+
+This rule documents the coding standards, naming conventions, and file structure patterns used in this Next.js blog project.
+
+## Overview
+
+Following these conventions ensures consistency across the codebase, making it easier to maintain and extend. These patterns help maintain a clean, readable, and professional codebase.
+
+## File Naming and Organization
+
+### Directory Structure
+
+```
+app/
+├── components/    # Reusable UI components
+│   ├── ...
+├── [feature]/     # Pages and features (blog, about, etc.)
+│   ├── page.tsx   # Route page component
+│   └── ...
+├── lib/           # Utility functions and helpers
+├── config.ts      # Site-wide configuration
+└── ...
+```
+
+### File Naming Conventions
+
+- **Component files**: Use kebab-case for filenames
+  - ✅ `github-calendar.tsx`, `theme-switch.tsx`
+  - ❌ `GithubCalendar.tsx`, `ThemeSwitch.tsx`
+
+- **Page files**: Use `page.tsx` within feature directories
+  - ✅ `app/about/page.tsx`
+  - ❌ `app/about/About.tsx` or `app/about/index.tsx`
+
+## Component Naming and Structure
+
+### Component Names
+
+- Use PascalCase for component function names
+  - ✅ `export default function GithubCalendar()`
+  - ❌ `export default function githubCalendar()`
+
+- Use descriptive, noun-based names for components
+  - ✅ `Navbar`, `GitHubCalendar`, `ThemeSwitch`
+  - ❌ `Nav`, `Calendar`, `Toggle`
+
+### Component Structure
+
+- Client components must include the 'use client' directive at the top
+- Include TSDoc comments above each component explaining its purpose
+- Organize imports in this order:
+  1. React and Next.js imports
+  2. Third-party libraries
+  3. Internal components and utilities
+  4. Types and styles
+
+Example:
+
+```tsx
+'use client'
+
+import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
+import SomePackage from 'some-package'
+
+import { YourComponent } from './your-component'
+import { utilityFunction } from '../lib/utils'
+
+/**
+ * ComponentName component
+ *
+ * Brief description of what this component does
+ *
+ * @returns {JSX.Element} The rendered component
+ */
+export default function ComponentName() {
+  // Component implementation
+}
+```
+
+## Props and Types
+
+- Use TypeScript for all components and functions
+- Define explicit interfaces for component props
+- Use descriptive type names
+
+Example:
+
+```tsx
+interface ButtonProps {
+  variant: 'primary' | 'secondary'
+  size?: 'small' | 'medium' | 'large'
+  onClick: () => void
+  children: React.ReactNode
+}
+
+export function Button({ variant, size = 'medium', onClick, children }: ButtonProps) {
+  // Implementation
+}
+```
+
+## Styling
+
+- Use Tailwind CSS classes for styling
+- Prefer utility classes over custom CSS when possible
+- Use consistent naming for dark mode classes (`dark:text-neutral-200`)
+- Group related classes together for readability:
+  - Position & layout
+  - Size & spacing
+  - Typography
+  - Colors & backgrounds
+  - Effects & states
+
+Example:
+```tsx
+<div className="flex flex-col md:flex-row gap-4 p-3 text-base font-medium text-neutral-800 dark:text-neutral-200 hover:underline">
+  {/* Content */}
+</div>
+```
+
+## Common Patterns
+
+### React Hooks Usage
+
+- Place hooks at the top of the component
+- Use destructuring for useState initial values
+- Follow the naming convention `[value, setValue]` for state
+- For useEffect, clearly comment the purpose of each effect
+
+### Data Fetching and Processing
+
+- Use async/await for data fetching
+- Handle loading, success, and error states
+- Add proper typings for API responses
+
+## Common Pitfalls
+
+- Don't mix default and named exports inconsistently
+- Avoid inline styles; use Tailwind classes instead
+- Don't use global CSS for component-specific styling
+- Avoid complex nested ternary operators
+- Don't put business logic directly in the component; extract to functions
