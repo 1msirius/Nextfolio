@@ -1,0 +1,124 @@
+---
+description: Guidelines for managing dependencies and installing packages in the project
+globs:
+alwaysApply: false
+---
+
+# Package Management
+
+This rule documents the package management practices for this project, including which package manager to use and how to manage dependencies.
+
+## Overview
+
+Using a consistent package management approach ensures that all team members have the same development experience and prevents dependency-related issues. This project uses pnpm as the package manager.
+
+## Package Manager
+
+### Use pnpm
+
+This project uses pnpm as the package manager. pnpm is preferred over npm or yarn because it:
+
+- Has a more efficient storage mechanism
+- Creates a truly deterministic dependency tree
+- Is faster than npm and yarn
+- Uses less disk space
+
+### Installing pnpm
+
+If you don't have pnpm installed:
+
+```bash
+# Using npm
+npm install -g pnpm
+
+# Using homebrew on macOS
+brew install pnpm
+```
+
+## Installing Dependencies
+
+### Adding New Dependencies
+
+To add a new dependency:
+
+```bash
+# Production dependency
+pnpm add package-name
+
+# Development dependency
+pnpm add -D package-name
+```
+
+### Updating Dependencies
+
+To update dependencies:
+
+```bash
+# View outdated packages
+pnpm outdated
+
+# Update all packages
+pnpm update
+
+# Update a specific package
+pnpm update package-name
+```
+
+## lockfile
+
+Do not edit the `pnpm-lock.yaml` file manually. It is generated automatically and ensures consistent installations across environments.
+
+## package.json Management
+
+### Scripts
+
+When adding scripts to package.json:
+- Use descriptive names that clearly indicate what the script does
+- Document complex scripts with comments in the README
+- Verify that the script works in all development environments
+
+### Version Management
+
+When specifying dependency versions:
+- Use exact versions for critical packages (`"package": "1.2.3"`)
+- Use compatible versions for most packages (`"package": "^1.2.3"`)
+- Avoid using `latest` or `*` as they can lead to unexpected behavior
+
+## Common Pitfalls
+
+- **Do not** use multiple package managers (npm, yarn, and pnpm) in the same project
+- **Do not** modify the lockfile directly
+- **Do not** install global packages that should be project dependencies
+- **Avoid** unnecessary dependencies - prefer native solutions when available
+- **Do not** use `--force` flags unless absolutely necessary
+
+## Troubleshooting
+
+If you encounter dependency issues:
+
+1. Delete the `node_modules` directory
+2. Delete the `.pnpm-store` directory (if using pnpm's global store)
+3. Run `pnpm install` to reinstall all dependencies
+
+For persistent issues, try `pnpm install --force` as a last resort.
+
+## Real-World Examples
+
+### Adding a Package
+
+```bash
+# Example: Adding react-github-calendar
+pnpm add react-github-calendar
+```
+
+### Handling Workspace Dependencies
+
+This project follows a monorepo approach. When working with workspace dependencies:
+
+```bash
+# Installing a package across all workspaces
+pnpm add package-name -w
+
+# Installing a package for a specific workspace
+pnpm add package-name --filter workspace-name
+```

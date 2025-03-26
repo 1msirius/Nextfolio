@@ -1,11 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import GithubCalendar from './components/github-calendar'
 import { socialLinks } from './config'
 
 /**
  * Homepage component
  *
- * Displays a brief introduction with profile image and a link to the about page
+ * Displays a brief introduction with profile image, a link to the about page,
+ * and GitHub contribution calendar
  *
  * @returns {JSX.Element} The rendered homepage
  */
@@ -38,6 +40,11 @@ export default function Page() {
             Read more about me →
           </Link>
         </p>
+
+        <div className="mt-8">
+          <h2 className="text-xl font-medium mb-4">My GitHub Activity</h2>
+          <GithubCalendar />
+        </div>
       </div>
     </section>
   )
