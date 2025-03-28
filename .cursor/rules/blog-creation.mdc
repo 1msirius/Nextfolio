@@ -1,7 +1,8 @@
 ---
+title: Blog Post Creation Guide
 description: Guidelines for creating and formatting blog posts using MDX in the personal blog
-globs:
-alwaysApply: false
+glob: "content/**/*.mdx"
+alwaysApply: true
 ---
 
 # Blog Post Creation Guide
@@ -73,9 +74,9 @@ Standard Markdown syntax works as expected:
 1. Numbered item
 2. Another numbered item
 
-[Link text](mdc:https:/example.com)
+[Link text](https://example.com)
 
-![Alt text](mdc:path/to/image.jpg)
+![Alt text](/path/to/image.jpg)
 ```
 
 ### Code Blocks
@@ -110,9 +111,9 @@ The blog includes several custom components you can use in your MDX:
 
 ```mdx
 <ImageGrid>
-  ![Image 1](mdc:image1.jpg)
-  ![Image 2](mdc:image2.jpg)
-  ![Image 3](mdc:image3.jpg)
+  ![Image 1](/image1.jpg)
+  ![Image 2](/image2.jpg)
+  ![Image 3](/image3.jpg)
 </ImageGrid>
 ```
 
@@ -156,8 +157,8 @@ Use the Callout component for highlighting important information:
 
 For reference, examine these existing blog posts:
 
-- [Getting Started Guide](mdc:../../content/getting-started.mdx) - Basic post structure and formatting
-- [MDX Examples](mdc:../../content/custom-mdx-examples.mdx) - Demonstrates custom components
+- [Getting Started Guide](../../content/getting-started.mdx) - Basic post structure and formatting
+- [MDX Examples](../../content/custom-mdx-examples.mdx) - Demonstrates custom components
 
 ## Common Pitfalls
 
