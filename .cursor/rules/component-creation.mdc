@@ -1,8 +1,7 @@
 ---
-title: Component Creation Pattern
 description: This rule documents our approach to creating React components, managing state, and handling data fetching in our Next.js blog application.
-glob: "app/components/**/*.tsx"
-alwaysApply: true
+globs: 
+alwaysApply: false
 ---
 
 # Component Creation Pattern
@@ -75,16 +74,10 @@ For component-specific state, use the standard React hooks:
 
 import { useState, useEffect } from 'react'
 
-interface ApiData {
-  id: string;
-  name: string;
-  // Add other properties based on your API response
-}
-
 export default function DataDisplay() {
-  const [data, setData] = useState<ApiData | null>(null)
-  const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<Error | null>(null)
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     async function fetchData() {
@@ -94,7 +87,7 @@ export default function DataDisplay() {
         const result = await response.json()
         setData(result)
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('Unknown error occurred'))
+        setError(err)
       } finally {
         setLoading(false)
       }
@@ -104,7 +97,7 @@ export default function DataDisplay() {
   }, [])
 
   if (loading) return <p>Loading...</p>
-  if (error) return <p>Error loading data: {error.message}</p>
+  if (error) return <p>Error loading data</p>
 
   return <div>{/* Render data */}</div>
 }
@@ -119,32 +112,12 @@ For global state that needs to be accessed by multiple components, use React Con
 
 import { createContext, useContext, useState } from 'react'
 
-// Define the shape of your context state
-interface MyContextState {
-  theme: 'light' | 'dark';
-  isLoggedIn: boolean;
-  user: {
-    name: string;
-    email: string;
-  } | null;
-}
-
-// Define initial state
-const defaultContextState: MyContextState = {
-  theme: 'light',
-  isLoggedIn: false,
-  user: null
-};
-
-// Create context with the defined shape
-const MyContext = createContext<{
-  state: MyContextState;
-  setState: React.Dispatch<React.SetStateAction<MyContextState>>;
-} | null>(null);
+// Create context
+const MyContext = createContext(null)
 
 // Provider component
-export function MyContextProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = useState<MyContextState>(defaultContextState)
+export function MyContextProvider({ children }) {
+  const [state, setState] = useState(initialState)
 
   return (
     <MyContext.Provider value={{ state, setState }}>
@@ -173,14 +146,8 @@ For server components, fetch data directly without useState or useEffect:
 import { notFound } from 'next/navigation'
 import { getDataById } from 'app/lib/data'
 
-interface DataType {
-  id: string;
-  title: string;
-  description: string;
-}
-
-export default async function DataPage({ params }: { params: { id: string } }) {
-  const data = await getDataById(params.id) as DataType | null
+export default async function DataPage({ params }) {
+  const data = await getDataById(params.id)
 
   if (!data) {
     notFound()
@@ -204,16 +171,10 @@ For client components that need to fetch data, use the standard pattern with use
 
 import { useState, useEffect } from 'react'
 
-interface ApiResponse {
-  id: string;
-  title: string;
-  // Add other properties from your API
-}
-
 export default function ClientFetch() {
-  const [data, setData] = useState<ApiResponse[] | null>(null)
-  const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<Error | null>(null)
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     let isMounted = true
@@ -229,7 +190,7 @@ export default function ClientFetch() {
         }
       } catch (err) {
         if (isMounted) {
-          setError(err instanceof Error ? err : new Error('Unknown error occurred'))
+          setError(err)
           setLoading(false)
         }
       }
@@ -242,17 +203,7 @@ export default function ClientFetch() {
     }
   }, [])
 
-  if (loading) return <p>Loading data...</p>
-  if (error) return <p>Error: {error.message}</p>
-  if (!data || data.length === 0) return <p>No data available</p>
-
-  return (
-    <ul>
-      {data.map(item => (
-        <li key={item.id}>{item.title}</li>
-      ))}
-    </ul>
-  )
+  // Implementation...
 }
 ```
 
@@ -376,20 +327,7 @@ export default function BlogPosts() {
             return 1;
           })
           .map((post) => (
-            <Link
-              key={post.slug}
-              className="flex flex-col space-y-1 mb-5 transition-opacity duration-200 hover:opacity-80"
-              href={`/blog/${post.slug}`}
-            >
-              <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
-                <h2 className="text-black dark:text-white">
-                  {post.metadata.title}
-                </h2>
-                <p className="text-neutral-600 dark:text-neutral-400 tabular-nums text-sm">
-                  {formatDate(post.metadata.publishedAt, false)}
-                </p>
-              </div>
-            </Link>
+            // Rendering blog posts
           ))}
       </div>
     </section>
