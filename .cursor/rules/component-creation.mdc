@@ -1,0 +1,365 @@
+---
+description: This rule documents our approach to creating React components, managing state, and handling data fetching in our Next.js blog application.
+globs: 
+alwaysApply: false
+---
+
+# Component Creation Pattern
+
+This rule documents our approach to creating React components, managing state, and handling data fetching in our Next.js blog application.
+
+## Overview
+
+Components in this codebase follow a consistent pattern to ensure maintainability, proper TypeScript typing, and clear separation of concerns. This guide explains when to use client vs. server components, how to manage state, and best practices for data fetching.
+
+## Component Types
+
+### Server Components vs. Client Components
+
+Next.js App Router uses React Server Components by default. You need to decide which type to use:
+
+#### Server Components (Default)
+- No need for the `'use client'` directive
+- Cannot use React hooks (useState, useEffect, etc.)
+- Cannot use browser-only APIs
+- Are rendered on the server
+- Reduce client-side JavaScript
+
+**When to use**: For components that don't need interactivity, don't use browser APIs, or fetch data directly.
+
+#### Client Components
+- Must include the `'use client'` directive at the top of the file
+- Can use React hooks and event handlers
+- Can access browser APIs
+- Are hydrated in the browser
+
+**When to use**: For components that require interactivity, state, or browser APIs.
+
+Example of a client component:
+
+```tsx
+'use client'
+
+import { useState } from 'react'
+
+/**
+ * Interactive component that counts clicks
+ *
+ * @returns {JSX.Element} The rendered component
+ */
+export default function ClickCounter() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <button
+      onClick={() => setCount(count + 1)}
+      className="px-4 py-2 bg-neutral-200 dark:bg-neutral-800 rounded"
+    >
+      Clicked {count} times
+    </button>
+  )
+}
+```
+
+## State Management
+
+This project uses a minimalist approach to state management, preferring local component state for most use cases and Context API for global state like theming.
+
+### Local Component State
+
+For component-specific state, use the standard React hooks:
+
+```tsx
+'use client'
+
+import { useState, useEffect } from 'react'
+
+export default function DataDisplay() {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true)
+        const response = await fetch('/api/data')
+        const result = await response.json()
+        setData(result)
+      } catch (err) {
+        setError(err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error loading data</p>
+
+  return <div>{/* Render data */}</div>
+}
+```
+
+### Context API
+
+For global state that needs to be accessed by multiple components, use React Context:
+
+```tsx
+'use client'
+
+import { createContext, useContext, useState } from 'react'
+
+// Create context
+const MyContext = createContext(null)
+
+// Provider component
+export function MyContextProvider({ children }) {
+  const [state, setState] = useState(initialState)
+
+  return (
+    <MyContext.Provider value={{ state, setState }}>
+      {children}
+    </MyContext.Provider>
+  )
+}
+
+// Custom hook for consuming context
+export function useMyContext() {
+  const context = useContext(MyContext)
+  if (!context) {
+    throw new Error('useMyContext must be used within a MyContextProvider')
+  }
+  return context
+}
+```
+
+## Data Fetching
+
+### Server Component Data Fetching
+
+For server components, fetch data directly without useState or useEffect:
+
+```tsx
+import { notFound } from 'next/navigation'
+import { getDataById } from 'app/lib/data'
+
+export default async function DataPage({ params }) {
+  const data = await getDataById(params.id)
+
+  if (!data) {
+    notFound()
+  }
+
+  return (
+    <div>
+      <h1>{data.title}</h1>
+      <p>{data.description}</p>
+    </div>
+  )
+}
+```
+
+### Client Component Data Fetching
+
+For client components that need to fetch data, use the standard pattern with useState and useEffect:
+
+```tsx
+'use client'
+
+import { useState, useEffect } from 'react'
+
+export default function ClientFetch() {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    let isMounted = true
+
+    async function fetchData() {
+      try {
+        const response = await fetch('/api/data')
+        const result = await response.json()
+
+        if (isMounted) {
+          setData(result)
+          setLoading(false)
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err)
+          setLoading(false)
+        }
+      }
+    }
+
+    fetchData()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  // Implementation...
+}
+```
+
+## Props and Types
+
+### TypeScript Interface for Props
+
+Always define explicit TypeScript interfaces for component props:
+
+```tsx
+interface CardProps {
+  title: string
+  description: string
+  imageUrl?: string
+  onClick?: () => void
+  variant?: 'primary' | 'secondary'
+}
+
+export function Card({
+  title,
+  description,
+  imageUrl,
+  onClick,
+  variant = 'primary'
+}: CardProps) {
+  // Implementation
+}
+```
+
+### Component Return Types
+
+Specify the return type for components:
+
+```tsx
+/**
+ * Display a user's profile information
+ */
+export function UserProfile({ user }: UserProfileProps): JSX.Element {
+  return (
+    // JSX here
+  )
+}
+```
+
+## Implementation Steps
+
+1. Determine if your component needs to be a client or server component
+2. Create the file with the appropriate name (use kebab-case)
+3. Add the `'use client'` directive if it's a client component
+4. Define the TypeScript interface for props
+5. Write the component function with proper JSDoc comment
+6. Implement state management if needed
+7. Implement data fetching if needed
+8. Add proper error handling and loading states
+9. Export the component
+
+## Real-World Examples
+
+### Client Component Example
+
+The ThemeSwitch component in our codebase is a good example of a client component with state management:
+
+```tsx
+// From app/components/theme-switch.tsx
+"use client";
+
+import * as React from "react";
+import { useTheme } from "next-themes";
+import { FaCircleHalfStroke } from "react-icons/fa6";
+
+export const ThemeSwitch: React.FC = () => {
+  const { theme, setTheme } = useTheme();
+  const [currentTheme, setCurrentTheme] = React.useState<"light" | "dark">("light");
+
+  // State management with useEffect and localStorage
+  React.useEffect(() => {
+    const storedPreference = localStorage.getItem("theme-preference") as "light" | "dark" | null;
+    const systemPreference = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+
+    const initialTheme = storedPreference || systemPreference;
+    reflectPreference(initialTheme);
+
+    // More implementation...
+  }, []);
+
+  // More implementation...
+};
+```
+
+### Server Component Example
+
+The BlogPosts component is a good example of a server component that fetches data:
+
+```tsx
+// From app/blog/page.tsx
+import Link from "next/link";
+import { formatDate, getBlogPosts } from "app/lib/posts";
+
+export const metadata = {
+  title: "Blog",
+  description: "Nextfolio Blog",
+};
+
+export default function BlogPosts() {
+  let allBlogs = getBlogPosts();
+
+  return (
+    <section>
+      <h1 className="mb-8 text-2xl font-medium tracking-tight">Our Blog</h1>
+      <div>
+        {allBlogs
+          .sort((a, b) => {
+            if (
+              new Date(a.metadata.publishedAt) >
+              new Date(b.metadata.publishedAt)
+            ) {
+              return -1;
+            }
+            return 1;
+          })
+          .map((post) => (
+            // Rendering blog posts
+          ))}
+      </div>
+    </section>
+  );
+}
+```
+
+## Common Pitfalls
+
+### Client Component Issues
+
+- **Forgetting 'use client'**: Always add this directive at the top of client components
+- **Hooks Order**: Always call hooks at the top level of your component
+- **Memory Leaks**: Clean up subscriptions and async operations in useEffect's return function
+- **Missing Dependencies**: Include all dependencies in useEffect dependency arrays
+
+### Server Component Issues
+
+- **Using Hooks**: Server components cannot use React hooks
+- **Browser APIs**: Server components cannot access browser APIs like localStorage or window
+- **Interactive Elements**: Server components cannot have interactive elements with event handlers
+
+### TypeScript Issues
+
+- **Any Type**: Avoid using `any` type, prefer explicit types
+- **Missing Props Validation**: Always define and validate props with TypeScript interfaces
+- **Incomplete Interface**: Ensure all props are properly typed, including optional ones
+
+### Performance Issues
+
+- **Unnecessary Re-renders**: Use React.memo(), useMemo(), or useCallback() for performance-critical components
+- **Large Component Files**: Keep components focused on a single responsibility
+- **Prop Drilling**: Consider Context API for deeply nested prop passing
+
+By following these guidelines, you'll create consistent, well-typed, and maintainable components for the blog application.

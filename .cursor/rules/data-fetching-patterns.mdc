@@ -1,0 +1,408 @@
+---
+title: Data Fetching Patterns
+description: Guidelines for fetching and managing data in Next.js App Router projects with server and client components
+glob: "app/**/*.tsx"
+alwaysApply: false
+---
+
+# Data Fetching Patterns
+
+This rule documents the standardized approaches for fetching, caching, and handling data in our Next.js blog application.
+
+## Overview
+
+Next.js App Router introduces new data fetching paradigms that combine server-side and client-side approaches. This guide explains the different data fetching methods, when to use each, and best practices for error handling and loading states.
+
+## Server vs. Client Data Fetching
+
+### Server Component Data Fetching
+
+Server Components can fetch data directly without useState/useEffect hooks:
+
+```tsx
+// In a server component (no 'use client' directive)
+import { getBlogPosts } from 'app/lib/posts'
+
+export default async function BlogList() {
+  // Direct async/await without hooks
+  const posts = await getBlogPosts()
+
+  return (
+    <div>
+      {posts.map(post => (
+        <BlogPostCard key={post.id} post={post} />
+      ))}
+    </div>
+  )
+}
+```
+
+Benefits:
+- Data fetching happens on the server
+- Reduced client-side JavaScript
+- Better SEO as content is server-rendered
+- No loading state needed for initial render
+
+### Client Component Data Fetching
+
+For interactive components that need to fetch data after user interaction:
+
+```tsx
+'use client'
+
+import { useState, useEffect } from 'react'
+
+export default function SearchResults({ query }) {
+  const [results, setResults] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    if (!query) return
+
+    let isMounted = true
+    setLoading(true)
+
+    async function fetchResults() {
+      try {
+        const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`)
+
+        if (!response.ok) {
+          throw new Error('Search failed')
+        }
+
+        const data = await response.json()
+
+        if (isMounted) {
+          setResults(data)
+          setError(null)
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err.message)
+          setResults([])
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false)
+        }
+      }
+    }
+
+    fetchResults()
+
+    return () => {
+      isMounted = false
+    }
+  }, [query])
+
+  // Render with loading/error states
+  if (loading) return <p>Loading results...</p>
+  if (error) return <p>Error: {error}</p>
+  if (results.length === 0) return <p>No results found</p>
+
+  return (
+    <ul>
+      {results.map(result => (
+        <li key={result.id}>{result.title}</li>
+      ))}
+    </ul>
+  )
+}
+```
+
+## Static vs. Dynamic Data
+
+### Static Data Fetching
+
+For content that doesn't change frequently, use static data fetching to generate at build time:
+
+```tsx
+// In app/blog/[slug]/page.tsx
+import { getBlogPosts } from 'app/lib/posts'
+
+// Generate static routes at build time
+export async function generateStaticParams() {
+  const posts = getBlogPosts()
+
+  return posts.map(post => ({
+    slug: post.slug,
+  }))
+}
+
+export default function BlogPost({ params }) {
+  // This data is fetched at build time for the pre-generated paths
+  const post = getBlogPosts().find(p => p.slug === params.slug)
+
+  if (!post) {
+    notFound()
+  }
+
+  return (
+    <article>
+      <h1>{post.title}</h1>
+      <div>{post.content}</div>
+    </article>
+  )
+}
+```
+
+### Dynamic Data Fetching
+
+For content that changes frequently or depends on user-specific data:
+
+```tsx
+// Dynamic server component
+export const dynamic = 'force-dynamic' // Opt out of static generation
+
+export default async function DashboardPage() {
+  // This will be fetched fresh on each request
+  const data = await fetchDashboardData()
+
+  return (
+    <Dashboard data={data} />
+  )
+}
+```
+
+## File System Data Loading
+
+Our blog specifically uses a file-system based data loading approach for blog posts:
+
+```tsx
+// In app/lib/posts.ts
+import fs from 'fs'
+import path from 'path'
+
+// Read MDX files from the filesystem
+export function getBlogPosts() {
+  // Get list of files
+  const files = fs.readdirSync(path.join(process.cwd(), 'content'))
+    .filter(filename => filename.endsWith('.mdx'))
+
+  // Process each file
+  return files.map(filename => {
+    // Read file content
+    const fileContent = fs.readFileSync(
+      path.join(process.cwd(), 'content', filename),
+      'utf8'
+    )
+
+    // Extract metadata and content
+    const { metadata, content } = parseFrontmatter(fileContent)
+
+    // Use filename as slug
+    const slug = filename.replace(/\.mdx$/, '')
+
+    return {
+      metadata,
+      slug,
+      content
+    }
+  }).filter(post => !post.metadata.hidden)
+}
+```
+
+## Error Handling and Loading States
+
+### Error Handling
+
+Use Next.js error boundaries and notFound() function:
+
+```tsx
+// In app/blog/[slug]/page.tsx
+import { notFound } from 'next/navigation'
+
+export default function BlogPost({ params }) {
+  const post = getBlogPost(params.slug)
+
+  if (!post) {
+    // This will render the closest not-found.tsx file
+    notFound()
+  }
+
+  return <Article post={post} />
+}
+```
+
+For custom error pages, create an error.tsx file:
+
+```tsx
+'use client'
+
+export default function Error({ error, reset }) {
+  return (
+    <div>
+      <h2>Something went wrong!</h2>
+      <p>{error.message}</p>
+      <button onClick={reset}>Try again</button>
+    </div>
+  )
+}
+```
+
+### Loading States
+
+For page loading states, create a loading.tsx file:
+
+```tsx
+// In app/blog/loading.tsx
+export default function Loading() {
+  return <div>Loading blog posts...</div>
+}
+```
+
+For component-level loading states, use conditional rendering:
+
+```tsx
+'use client'
+
+function DataComponent({ data, isLoading, error }) {
+  if (isLoading) return <LoadingSkeleton />
+  if (error) return <ErrorDisplay message={error.message} />
+  if (!data) return <EmptyState />
+
+  return <DataDisplay data={data} />
+}
+```
+
+## Implementation Steps
+
+1. Determine where data fetching should occur (server or client)
+2. For server components:
+   - Use direct async/await
+   - Consider static vs. dynamic data needs
+   - Implement error handling with notFound() or custom error responses
+3. For client components:
+   - Use useState/useEffect pattern
+   - Handle loading, error, and success states
+   - Clean up fetch operations when component unmounts
+4. Add appropriate TypeScript types for all data structures
+
+## Real-World Examples
+
+### Blog Posts Data Fetching
+
+Our blog uses a filesystem-based approach for blog posts:
+
+```tsx
+// From app/lib/posts.ts
+export function getBlogPosts() {
+  return getMDXData(path.join(process.cwd(), 'content'))
+    .filter(post => !post.metadata.hidden)
+}
+
+// From app/blog/page.tsx
+export default function BlogPosts() {
+  let allBlogs = getBlogPosts();
+
+  return (
+    <section>
+      <h1>Our Blog</h1>
+      <div>
+        {allBlogs
+          .sort((a, b) => {
+            if (
+              new Date(a.metadata.publishedAt) >
+              new Date(b.metadata.publishedAt)
+            ) {
+              return -1;
+            }
+            return 1;
+          })
+          .map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+            >
+              {post.metadata.title}
+            </Link>
+          ))}
+      </div>
+    </section>
+  );
+}
+```
+
+### GitHub Calendar Component
+
+The GithubCalendar component uses client-side data fetching with caching:
+
+```tsx
+'use client'
+
+import { useState, useEffect } from 'react'
+import { useTheme } from 'next-themes'
+
+export default function GithubCalendar() {
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  // Caching mechanism
+  useEffect(() => {
+    const checkCacheStatus = () => {
+      try {
+        if (typeof window !== 'undefined') {
+          const timestamp = localStorage.getItem('github-calendar-cache')
+
+          // If we have a cached timestamp and it's still fresh
+          if (timestamp && Date.now() - parseInt(timestamp, 10) < 3600000) {
+            // We have fresh cached data, can render immediately
+            setLoading(false)
+            return true
+          }
+
+          // Either no timestamp or expired
+          return false
+        }
+        return false
+      } catch (error) {
+        console.error('Error checking cache:', error)
+        return false
+      }
+    }
+
+    setMounted(true)
+
+    // If we have fresh cached data, don't show loading state
+    const hasFreshCache = checkCacheStatus()
+    if (!hasFreshCache) {
+      // No fresh cache, show loading state for a short time
+      setTimeout(() => setLoading(false), 300)
+    }
+  }, [])
+
+  // Component rendering...
+}
+```
+
+## Common Pitfalls
+
+### Performance Issues
+
+- **Fetching Too Early**: Don't fetch data before it's needed
+- **Missing Caching**: Consider caching data that doesn't change frequently
+- **No Cancellation**: Always cancel or handle unmounted component fetches
+- **Waterfalls**: Avoid nested dependent data fetches when possible
+
+### Server Component Issues
+
+- **Browser APIs in Server Components**: Don't use browser APIs like localStorage in server components
+- **Missing Error Handling**: Always handle potential errors in data fetching
+- **Large Data Sets**: Be cautious with large data transfers between server and client
+
+### TypeScript Issues
+
+- **Any Types**: Don't use `any` for API responses, define proper interfaces
+- **Missing Validation**: Validate data shape before using it
+- **Partial Data**: Handle cases where API returns partial or incomplete data
+
+### Security Concerns
+
+- **Exposing Secrets**: Never include API keys or secrets in client components
+- **URL Encoding**: Always encode user input used in URLs
+- **Data Sanitization**: Sanitize user-generated content before rendering
+
+By following these data fetching patterns, you'll create consistent, reliable, and maintainable data flows throughout the application.
