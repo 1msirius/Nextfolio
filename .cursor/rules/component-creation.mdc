@@ -1,5 +1,5 @@
 ---
-description: This rule documents our approach to creating React components, managing state, and handling data fetching in our Next.js blog application.
+description: 
 globs: 
 alwaysApply: false
 ---
