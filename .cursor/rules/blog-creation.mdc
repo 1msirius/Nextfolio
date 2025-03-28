@@ -1,6 +1,6 @@
 ---
 description: Guidelines for creating and formatting blog posts using MDX in the personal blog
-globs: 
+globs:
 alwaysApply: false
 ---
 
