@@ -14,6 +14,8 @@ import TechnicalDetails from "./technical-details";
 import { ZoomImage } from "./ZoomImage";
 import { CaptionComponent } from "./caption";
 import SpatialSynthesizerSketch from "./SpatialSynthesizerSketch";
+import EncasedMeltingSphere from "./EncasedMeltingSphere";
+import { ImageGrid } from "./image-grid";
 
 
 const components = {
@@ -21,8 +23,10 @@ const components = {
   ProjectOverview,
   MediaSection,
   MediaItem,
+  ImageGrid,
   CallToAction,
   SpatialSynthesizerSketch,
+  EncasedMeltingSphere, 
   YouTube: YouTubeComponent,
   SoundCloudEmbed,
   Image,

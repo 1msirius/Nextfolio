@@ -1,0 +1,47 @@
+---
+title: "Encased Melting"
+slug: "encased_melting"
+summary: "Many textures converge on an interactive sphere of motion."
+category: "art"
+isFeatured: false
+image: "/photos/encased-melting-preview.png"
+---
+
+import ProjectOverview from '@/app/components/ProjectOverview';
+import MediaSection from '@/app/components/MediaSection';
+import MediaItem from '@/app/components/MediaItem';
+import ImageGrid from '@/app/components/ImageGrid';
+import EncasedMeltingSphere from '@/app/components/EncasedMeltingSphere';
+import CallToAction from '@/app/components/CallToAction';
+
+<ProjectOverview>
+Encased Melting explores the layering of different degrees of melting chaos into a coherent dimensional form. Ten textures—each the result of an abstract melting plane process—are mapped, one at a time, onto the surface of a sphere. 
+
+The results are dynamic, interactive objects: different planetary surfaces with contrasting feelings.
+</ProjectOverview>
+
+<MediaSection title="Texture Gallery">
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+    <ZoomImage src="/photos/texture0.png" alt="Texture 0" />
+    <ZoomImage src="/photos/texture1.png" alt="Texture 1" />
+    <ZoomImage src="/photos/texture2.png" alt="Texture 2" />
+    <ZoomImage src="/photos/texture3.png" alt="Texture 3" />
+    <ZoomImage src="/photos/texture4.png" alt="Texture 4" />
+    <ZoomImage src="/photos/texture5.png" alt="Texture 5" />
+    <ZoomImage src="/photos/texture6.png" alt="Texture 6" />
+    <ZoomImage src="/photos/texture7.png" alt="Texture 7" />
+    <ZoomImage src="/photos/texture8.png" alt="Texture 8" />
+    <ZoomImage src="/photos/texture9.png" alt="Texture 9" />
+  </div>
+</MediaSection>
+
+<MediaSection title="Interactive Sphere">
+  <MediaItem
+    title="Encased Melting (Interactive Preview)"
+    description="Click and drag to rotate. Scroll to zoom."
+  >
+    <EncasedMeltingSphere />
+  </MediaItem>
+</MediaSection>
+
+<CallToAction email="aaron.demby.jones@gmail.com" />
