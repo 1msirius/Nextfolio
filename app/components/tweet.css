@@ -70,7 +70,7 @@
 }
 
 .tweet a div {
-  @apply font-medium tracking-tight;
+  @apply font-medium;
 }
 
 .tweet div[class*="mediaWrapper"] {

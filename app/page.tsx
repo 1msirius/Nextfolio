@@ -15,7 +15,7 @@ export default function Page() {
           priority
         />
       </a>
-      <h1 className="mb-8 text-2xl font-medium tracking-tight">
+      <h1 className="mb-8 text-2xl font-medium">
         Portfolio template!
       </h1>
       <div className="prose prose-neutral dark:prose-invert">
