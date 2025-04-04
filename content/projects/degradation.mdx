@@ -1,24 +1,50 @@
 ---
 title: "Degradation"
 slug: "degradation"
-summary: "Controlled chaotic melting via iterative image‑to‑image diffusion."
-category: "experiments"
+summary: "Entropy wearing a costume of intention."
+cluster: "errant"
 isFeatured: false
-image: "/photos/crows.gif"
+image: "/photos/degradation.gif"
+date: "2023"
+tags: ["diffusion", "entropy", "image-to-image", "animated"]
+whisper: "It only became beautiful after forgetting what it was trying to be."
+collapseMode: true
 ---
 
 import ZoomImage from "@/components/ZoomImage"
 
 <ProjectOverview>
-These animations start from a single text‑to‑image prompt that generates a base frame. Each subsequent frame runs through an image‑to‑image diffusion pipeline — reconditioning on the same prompt while gradually injecting noise. The result is a controlled, chaotic melting: a visual degradation that blurs the boundary between creation and entropy.
+This began as precision.
+
+One image, coaxed into being by a prompt. Then another. Then another.  
+Each time, the same instructions. But each time, more noise. More forgetting.
+
+*Degradation* is what happens when the machine hallucinates too hard.  
+Diffusion gives way to dissolution.
+The result: a looping entropy. Birds that flock into a melting streak of abstraction. A piano that smears into a grid of noise.
+
+This is what the prompt wanted all along.
 </ProjectOverview>
 
-<MediaSection title="Examples">
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-    <ZoomImage src="/photos/crows.gif" alt="Degradation — Crows" />
-    <ZoomImage src="/photos/piano-melt.gif" alt="Degradation — Piano Melt" />
-    <ZoomImage src="/photos/electricity.gif" alt="Degradation — Electricity" />
-  </div>
+<MediaSection title="Meltdowns">
+<div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+  <ZoomImage src="/photos/degradation.gif" alt="Flying crows, frame-decayed" />
+  <ZoomImage src="/photos/piano-melt.gif" alt="Twisted architecture" />
+</div>
 </MediaSection>
+
+<FieldNote>
+Noise to noise.
+</FieldNote>
+
+<CollapseMetadata>
+  <ul>
+    <li><strong>Date:</strong> 2023</li>
+    <li><strong>Tools:</strong> Stable Diffusion, img2img looping pipeline</li>
+    <li><strong>Process:</strong> Recursive re-prompting with increasing noise</li>
+    <li><strong>Iterations:</strong> 120 </li>
+    <li><strong>Artifacts:</strong> The crows have eyes</li>
+  </ul>
+</CollapseMetadata>
 
 <CallToAction email="aaron.demby.jones@gmail.com" />
