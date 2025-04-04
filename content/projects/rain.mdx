@@ -1,16 +1,30 @@
 ---
 title: "Rain"
 slug: "rain"
-summary: "A fractal‑inspired composition based on the Cantor ternary set."
-category: "experiments"
+summary: "A composition that recursively removes itself."
+category: "fractured"
 externalUrl: "https://soundcloud.com/aaron-demby-jones/rain"
 isFeatured: false
 image: "/photos/rain.png"
+date: "2014"
+tags: ["algorithmic", "recursive", "cantor"]
 ---
+
 import { CaptionComponent as Caption } from '@/app/components/caption';
+import ZoomImage from "@/components/ZoomImage";
 
 <ProjectOverview>
-The composition of *Rain* borrows from a fractal pattern taken from the Cantor ternary set, where the middle third of a line segment is removed, and then this process is repeated recursively with the remaining shorter segments. 
+*Rain* isn’t structured — it’s **carved**.
+
+Like the Cantor ternary set, it begins whole.  
+Then something is taken away. Then more. Then again.  
+What’s left is silence in the shape of a pattern.
+
+This piece removes its own center. Recursively.  
+Rhythms drop out. Frequencies fall into negative space.
+
+It’s not music about rain. This is rain rendered algorithmic: broken into recursive gaps, twitching at the edge of rhythm.
+
 <Image
   src="/photos/cantor.png"
   alt="Cantor set middle‑third removal diagram"
@@ -19,18 +33,30 @@ The composition of *Rain* borrows from a fractal pattern taken from the Cantor t
   className="my-8 mx-auto"
 />
 <Caption>
-  Diagram of the Cantor ternary set, showing the recursive removal of the middle third. Source: Wikipedia
+  Diagram of the Cantor ternary set — a line broken by subtraction. My sound followed it.
 </Caption>
-Timbres, rhythms, form, and equalization all follow a middle‑third removal process, creating an unusually fragmented musical experience.
 </ProjectOverview>
-
 
 <MediaSection title="Listen">
   <MediaItem
     title="Rain"
-    description="An experimental piece structured by the Cantor set's recursive removal pattern."
+    description="Structured by recursive deletion. Skip to 0:57 to hear the first rainstorm."
     soundCloudUrl="https://soundcloud.com/aaron-demby-jones/rain"
   />
 </MediaSection>
+
+<FieldNote>
+The frequency carving gave me shivers.
+</FieldNote>
+
+<CollapseMetadata>
+  <ul>
+    <li><strong>Date:</strong> 2014</li>
+    <li><strong>Tools:</strong> SuperCollider, custom EQ scripting, percussive ukulele</li>
+    <li><strong>Process:</strong> Middle–third deletion, recursively applied to form, rhythm, and tone</li>
+    <li><strong>Iterations:</strong> 3 layers</li>
+    <li><strong>Artifacts:</strong> Scars in my ukulele</li>
+  </ul>
+</CollapseMetadata>
 
 <CallToAction email="aaron.demby.jones@gmail.com" />

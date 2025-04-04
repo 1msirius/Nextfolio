@@ -16,6 +16,9 @@ import { CaptionComponent } from "./caption";
 import SpatialSynthesizerSketch from "./SpatialSynthesizerSketch";
 import EncasedMeltingSphere from "./EncasedMeltingSphere";
 import { ImageGrid } from "./image-grid";
+import CollapseMetadata from "./CollapseMetadata";
+import FieldNote from "./FieldNote";
+import Whisper from "./Whisper";
 
 
 const components = {
@@ -35,6 +38,9 @@ const components = {
   TechnicalDetails,
   ZoomImage,
   Caption: CaptionComponent,
+  CollapseMetadata,
+  FieldNote,
+  Whisper,
 };
 
 type ClientMDXProps = {
