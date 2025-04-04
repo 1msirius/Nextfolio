@@ -1,20 +1,19 @@
-// app/art/page.tsx
 import Link from "next/link";
 import Image from "next/image";
 import { getAllProjects } from "@/lib/projects_mdx";
 
-export default async function ArtPage() {
+export default async function EnclosedPage() {
   const all = await getAllProjects();
-  const artProjects = all.filter((p) => p.category === "art");
+  const enclosedProjects = all.filter((p) => p.cluster === "enclosed");
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">Art</h1>
+      <h1 className="text-4xl font-bold mb-8">Enclosed</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {artProjects.map((project) => (
+        {enclosedProjects.map((project) => (
           <Link key={project.slug} href={`/projects/${project.slug}`}>
             <div className="group">
-              {(project.image) && (
+              {project.image && (
                 <Image
                   src={project.image}
                   alt={project.title}

@@ -1,20 +1,19 @@
-// app/music/page.tsx
 import Link from "next/link";
 import Image from "next/image";
 import { getAllProjects } from "@/lib/projects_mdx";
 
-export default async function MusicPage() {
+export default async function FracturedPage() {
   const all = await getAllProjects();
-  const musicProjects = all.filter((p) => p.category === "music");
+  const fracturedProjects = all.filter((p) => p.cluster === "fractured");
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">Music</h1>
+      <h1 className="text-4xl font-bold mb-8">Fractured</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {musicProjects.map((project) => (
+        {fracturedProjects.map((project) => (
           <Link key={project.slug} href={`/projects/${project.slug}`}>
             <div className="group">
-              {(project.image) && (
+              {project.image && (
                 <Image
                   src={project.image}
                   alt={project.title}

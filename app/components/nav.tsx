@@ -3,9 +3,10 @@ import { ThemeSwitch } from "./theme-switch";
 import { metaData } from "../config";
 
 const navItems = {
-  "/music": { name: "Music" },
-  "/art": { name: "Art" },
-  "/experiments": { name: "Experiments" },
+  "/resonant": { name: "Resonant" },
+  "/errant": { name: "Errant" },
+  "/fractured": { name: "Fractured" },
+  "/enclosed": { name: "Enclosed" },
   "/about": { name: "About" },
 };
 

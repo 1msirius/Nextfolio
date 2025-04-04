@@ -3,8 +3,9 @@ export interface MDXProject {
   slug: string;
   publishedAt: string;
   summary: string;
-  category: string;
-  tags: string;
+  cluster: "resonant" | "errant" | "fractured" | "enclosed"; // New required field
+  phaseState?: "awakening" | "expansion" | "collapse";        // Optional, for future use
+  tags: string[];                                              // Make this an array, not a string
   isFeatured: boolean;
   image?: string;
 }

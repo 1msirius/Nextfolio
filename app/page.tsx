@@ -44,9 +44,10 @@ export default async function HomePage() {
       <div className="mt-12">
         <p className="font-medium">Explore more:</p>
         <div className="flex space-x-4">
-          <Link href="/music">Music</Link>
-          <Link href="/art">Art</Link>
-          <Link href="/experiments">Experiments</Link>
+          <Link href="/resonant">Resonant</Link>
+          <Link href="/errant">Errant</Link>
+          <Link href="/fractured">Fractured</Link>
+          <Link href="/enclosed">Enclosed</Link>
         </div>
       </div>
     </main>
