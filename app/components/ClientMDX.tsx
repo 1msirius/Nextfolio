@@ -19,6 +19,7 @@ import { ImageGrid } from "./image-grid";
 import CollapseMetadata from "./CollapseMetadata";
 import FieldNote from "./FieldNote";
 import Whisper from "./Whisper";
+import SacredScroll from "./SacredScroll";
 
 
 const components = {
@@ -41,6 +42,7 @@ const components = {
   CollapseMetadata,
   FieldNote,
   Whisper,
+  SacredScroll,
 };
 
 type ClientMDXProps = {
