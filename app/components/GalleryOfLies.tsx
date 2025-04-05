@@ -8,8 +8,12 @@ interface Lie {
   cluster: string;
 }
 
-// We accept an optional prop for the button text
-export default function GalleryOfLies({ prompt = "Lie to me" }: { prompt?: string }) {
+interface GalleryProps {
+  prompt?: string;
+  mode?: "inline" | "gallery";
+}
+
+export default function GalleryOfLies({ prompt = "Lie to me", mode = "inline" }: GalleryProps) {
   const [lie, setLie] = useState<Lie | null>(null);
 
   const getRandomLie = () => {
@@ -17,9 +21,24 @@ export default function GalleryOfLies({ prompt = "Lie to me" }: { prompt?: strin
     setLie(random);
   };
 
+  if (mode === "gallery") {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        {lies.map((lie, index) => (
+          <div
+            key={index}
+            className="italic text-zinc-800 bg-white p-4 shadow-md rounded-xl hover:rotate-[-0.5deg] transition-transform"
+          >
+            “{lie.statement}”
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  // Inline mode
   return (
     <div className="flex flex-col items-start">
-      {/* The top row: question + button */}
       <div className="flex items-center gap-2">
         <span>Want the full manifesto?</span>
         <button
@@ -30,7 +49,6 @@ export default function GalleryOfLies({ prompt = "Lie to me" }: { prompt?: strin
         </button>
       </div>
 
-      {/* Below row: the lie. We fix min-h so it doesn't jerk the layout when empty. */}
       <div className="mt-2 min-h-[1.5rem] text-base italic text-zinc-800">
         {lie && `“${lie.statement}”`}
       </div>
