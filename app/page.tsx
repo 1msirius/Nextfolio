@@ -12,7 +12,7 @@ export default async function HomePage() {
     <main className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8">Aaron Demby Jones</h1>
       <p className="text-xl mb-12">
-        Artist &amp; Technologist exploring music improvisation, generative art, and creative programming.
+      Artist. Improviser. Builder of strange systems.
       </p>
 
       <h2 className="text-2xl font-semibold mb-6">Featured Work</h2>

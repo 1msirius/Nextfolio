@@ -1,17 +1,32 @@
 ---
 title: "Fluid Subspaces"
 slug: "subspace"
-summary: "Interpreting fluid flow as a superposition of modal shapes."
-category: "projects"
+summary: "Sound from flow. Geometry from tone."
+cluster: "enclosed"
 isFeatured: true
 image: "/photos/subspace.png"
+date: "2016–2017"
+tags: ["modal", "audiovisual", "simulation", "eigenvectors"]
+whisper: "Every note is a shape trapped in motion."
+collapseMode: true
 ---
 
 <ProjectOverview>
-*Fluid Subspaces* is an artistic exploration of fluid flow reimagined as a superposition of modal shapes. By isolating these shapes and their singular values, I synthesize corresponding frequencies to create a layered audiovisual tapestry — examining how distinct modes (each with its own pitch and texture) combine to form a dynamic spatial and sonic narrative.
+*Fluid Subspaces* began with a question:  
+If it could sing, what would fluid motion **sound** like?
+
+Inside every flow is a structure — a collection of hidden shapes, each vibrating at its own frequency. These are the system’s **eigenmodes**: invisible architectures of motion, encoded in the math.
+
+By isolating those modes and converting their amplitudes to sound, I built a library of physical melodies:  
+- Each mode: a shape + a note  
+- Combinations: chords, textures, cascades  
+
+This project is an **audiovisual system**. This is not metaphor.  
+It is translation: fluid becomes tone; tone becomes space.
+
 </ProjectOverview>
 
-<MediaSection title="Isolated Modes">
+<MediaSection title="Resonant Forms">
   <MediaItem
     title="One Note (mode 25)"
     description="The shape and sound of a low-frequency mode."
@@ -29,7 +44,7 @@ image: "/photos/subspace.png"
   />
 </MediaSection>
 
-<MediaSection title="Chord Formation">
+<MediaSection title="Combinatory Forms">
   <MediaItem
     title="Chord Formation"
     description="Combining the three isolated modes above into an audiovisual chord."
@@ -37,7 +52,7 @@ image: "/photos/subspace.png"
   />
 </MediaSection>
 
-<MediaSection title="Scale and Melody">
+<MediaSection title="Scale & Motion">
   <MediaItem
     title="Scale"
     description="Sweeping through a series of forms as a musical and spatial scale."
@@ -50,7 +65,7 @@ image: "/photos/subspace.png"
   />
 </MediaSection>
 
-<MediaSection title="Timbre and Spatial Effects">
+<MediaSection title="Spatial Timbres">
   <MediaItem
     title="Swell"
     description="Exploring spatial depth by layering all modes at varying intensities."
@@ -64,43 +79,48 @@ image: "/photos/subspace.png"
 </MediaSection>
 
 <MediaSection title="Abstract Trajectories">
-    <MediaItem
-        title="Example 1"
-        description="Mapping an unexpected path through configuration space."
-        youtubeUrl="https://www.youtube.com/embed/gQew0VmLS8k"
-    />
-    <MediaItem
-        title="Example 2"
-        description="Further exploration non-physical modal trajectories."
-        youtubeUrl="https://www.youtube.com/embed/y6zraBpH5PA"
-    />
+  <MediaItem
+    title="Example 1"
+    description="Mapping an unexpected path through configuration space."
+    youtubeUrl="https://www.youtube.com/embed/gQew0VmLS8k"
+  />
+  <MediaItem
+    title="Example 2"
+    description="Further exploration of non-physical modal trajectories."
+    youtubeUrl="https://www.youtube.com/embed/y6zraBpH5PA"
+  />
 </MediaSection>
+
+<FieldNote>
+I spent years tuning equations. And then the smoke answered.
+</FieldNote>
+
+<CollapseMetadata>
+  <ul>
+    <li><strong>Date:</strong> 2016–2017</li>
+    <li><strong>Tools:</strong> MATLAB, SuperCollider, C++ custom simulation visualizer</li>
+    <li><strong>Process:</strong> Modal decomposition of simulated fluid + sound synthesis from singular values</li>
+    <li><strong>Iterations:</strong> 3 published pieces, hundreds of variations, many days of ray-tracing compute time</li>
+    <li><strong>Artifacts:</strong> A PhD dissertation</li>
+  </ul>
+</CollapseMetadata>
 
 <TechnicalDetails>
   <ul className="list-disc list-inside space-y-2">
     <li>
-      <a
-        href="https://archive.bridgesmathart.org/2017/bridges2017-305.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="underline hover:text-blue-600"
-      >
+      <a href="https://archive.bridgesmathart.org/2017/bridges2017-305.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600">
         Seeing and Hearing the Eigenvectors of a Fluid (Bridges 2017)
-      </a>{" "}
-      — Visualization of fluid‑flow eigenvectors and their sonic analogues; foundational theory behind modal decomposition.
+      </a>
+      — Fluid‑flow eigenvectors and their sonic analogues; foundational theory behind the translation.
     </li>
     <li>
-      <a
-        href="https://graphics.pixar.com/library/FluidSubspaces/paper.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="underline hover:text-blue-600"
-      >
-        Compressing Fluid Subspaces ( Symposium on Computer Animation 2016)
-      </a>{" "}
-      — Describes the low‑dimensional compression scheme powering efficient fluid resimulation via modal bases.
+      <a href="https://graphics.pixar.com/library/FluidSubspaces/paper.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600">
+        Compressing Fluid Subspaces (SCA 2016)
+      </a>
+      — Low‑dimensional compression scheme powering efficient resimulation via modal bases.
     </li>
   </ul>
 </TechnicalDetails>
+
 
 <CallToAction email="aaron.demby.jones@gmail.com" />

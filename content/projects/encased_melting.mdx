@@ -1,27 +1,32 @@
 ---
 title: "Encased Melting"
 slug: "encased_melting"
-summary: "Many textures converge on an interactive sphere of motion."
-category: "art"
+summary: "Solid forms haunted by soft motion."
+cluster: "enclosed"
 isFeatured: false
 image: "/photos/encased-melting-preview.png"
+date: "2024"
+tags: ["interactive", "texture", "dimensional"]
+whisper: "Stillness is just movement under pressure."
+collapseMode: true
 ---
 
-import ProjectOverview from '@/app/components/ProjectOverview';
-import MediaSection from '@/app/components/MediaSection';
-import MediaItem from '@/app/components/MediaItem';
-import ImageGrid from '@/app/components/ImageGrid';
-import EncasedMeltingSphere from '@/app/components/EncasedMeltingSphere';
-import CallToAction from '@/app/components/CallToAction';
+import ZoomImage from "@/components/ZoomImage"
+import EncasedMeltingSphere from "@/components/EncasedMeltingSphere"
 
 <ProjectOverview>
-Encased Melting explores the layering of different degrees of melting chaos into a coherent dimensional form. Ten textures—each the result of an abstract melting plane process—are mapped, one at a time, onto the surface of a sphere. 
+What happens when melting is constrained?
 
-The results are dynamic, interactive objects: different planetary surfaces with contrasting feelings.
+*Encased Melting* begins with chaos: nine procedural textures, each formed by melting abstract shapes. Then they’re wrapped, one by one, onto the surface of a spinning sphere.
+
+Something about the result feels planetary.  
+
+This is structure containing liquidity.  
+A soft thing sealed in a hard shell.
 </ProjectOverview>
 
-<MediaSection title="Texture Gallery">
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+<MediaSection title="Orbital Skins">
+<div className="grid grid-cols-1 sm:grid-cols-3 gap-4 px-4 sm:px-6 md:px-8">
     <ZoomImage src="/photos/texture0.png" alt="Texture 0" />
     <ZoomImage src="/photos/texture1.png" alt="Texture 1" />
     <ZoomImage src="/photos/texture2.png" alt="Texture 2" />
@@ -31,17 +36,30 @@ The results are dynamic, interactive objects: different planetary surfaces with 
     <ZoomImage src="/photos/texture6.png" alt="Texture 6" />
     <ZoomImage src="/photos/texture7.png" alt="Texture 7" />
     <ZoomImage src="/photos/texture8.png" alt="Texture 8" />
-    <ZoomImage src="/photos/texture9.png" alt="Texture 9" />
   </div>
 </MediaSection>
 
-<MediaSection title="Interactive Sphere">
+<MediaSection title="Encapsulation Test Chamber">
   <MediaItem
-    title="Encased Melting (Interactive Preview)"
-    description="Click and drag to rotate. Scroll to zoom."
+    title="Encased Melting"
+    description="The orb responds to touch. Each texture has its own gravity."
   >
     <EncasedMeltingSphere />
   </MediaItem>
 </MediaSection>
+
+<FieldNote>
+It’s trying not to remember it was ever fluid.
+</FieldNote>
+
+<CollapseMetadata>
+  <ul>
+    <li><strong>Date:</strong> 2024</li>
+    <li><strong>Tools:</strong> p5.js, shader fragments, 3D surface mapping</li>
+    <li><strong>Process:</strong> Procedural melting textures mapped onto a rotating mesh</li>
+    <li><strong>Iterations:</strong> 9 planes, 1 shell</li>
+    <li><strong>Artifacts:</strong> Signs of alien life</li>
+  </ul>
+</CollapseMetadata>
 
 <CallToAction email="aaron.demby.jones@gmail.com" />

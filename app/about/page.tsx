@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Whisper from "../components/Whisper";
 
 export default function AboutPage() {
   return (
@@ -12,14 +13,18 @@ export default function AboutPage() {
         className="rounded-full mb-4"
       />
       <p className="text-lg mb-4">
-        I'm an artist and technologist exploring music improvisation, generative art, and creative programming. My work blends sound, visuals, and computation to create unique experiences.
+        I build systems that sing. Sometimes they melt. Sometimes they loop forever. I like when structure forgets itself.
       </p>
       <p className="text-lg mb-4">
-        My background includes experimental music, digital art, and software development. I'm particularly interested in the intersection of improvisation and computation—whether through sound synthesis, generative visuals, or interactive tools.
+        My work blends improvisation, computation, and a stubborn sense of wonder. It lives at the intersection of sound and shape: where math becomes feeling, and code turns uncanny.
       </p>
       <p className="text-lg mb-4">
-        Feel free to explore my work in <a href="/music" className="text-blue-500">Music</a>, <a href="/art" className="text-blue-500">Art</a>, and <a href="/experiments" className="text-blue-500">Experiments</a>. If you're interested in collaboration, reach out via <a href="mailto:aaron.demby.jones@gmail.com" className="text-blue-500">email</a>.
+        I've spent time with pianos, particles, and unstable systems. My background touches experimental music, digital art, mathematics, and computer programming—but these days, I'm more interested in how they blur.
       </p>
-    </div>
+      <p className="text-lg mb-4">
+        My work is organized by clusters. You'll find pieces in <a href="/resonant" className="text-blue-500">Resonant</a>, <a href="/errant" className="text-blue-500">Errant</a>, <a href="/fractured" className="text-blue-500">Fractured</a>, and <a href="/enclosed" className="text-blue-500">Enclosed</a>. If something echoes in you, reach out via <a href="mailto:aaron.demby.jones@gmail.com" className="text-blue-500">email</a>.
+      </p>
+      <Whisper text="The work loops. The rules bend." />
+      </div>
   );
 }

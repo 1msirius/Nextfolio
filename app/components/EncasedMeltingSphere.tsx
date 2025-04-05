@@ -23,7 +23,7 @@ export default function EncasedMeltingSphere() {
   }, []);
 
   const sketch = (p: any, parent: HTMLDivElement) => {
-    const numTextures = 10;
+    const numTextures = 9;
     let textures: any[] = [];
     let currentIndex = 0;
     let nextIndex = 1;
