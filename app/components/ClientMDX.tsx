@@ -20,7 +20,7 @@ import CollapseMetadata from "./CollapseMetadata";
 import FieldNote from "./FieldNote";
 import Whisper from "./Whisper";
 import SacredScroll from "./SacredScroll";
-
+import GalleryOfLies from "./GalleryOfLies";
 
 const components = {
   p: "p",
@@ -43,6 +43,7 @@ const components = {
   FieldNote,
   Whisper,
   SacredScroll,
+  GalleryOfLies,
 };
 
 type ClientMDXProps = {

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Whisper from "../components/Whisper";
+import GalleryOfLies from "../components/GalleryOfLies";
 
 export default function AboutPage() {
   return (
@@ -24,7 +25,10 @@ export default function AboutPage() {
       <p className="text-lg mb-4">
         My work is organized by clusters. You'll find pieces in <a href="/resonant" className="text-blue-500">Resonant</a>, <a href="/errant" className="text-blue-500">Errant</a>, <a href="/fractured" className="text-blue-500">Fractured</a>, and <a href="/enclosed" className="text-blue-500">Enclosed</a>. If something echoes in you, reach out via <a href="mailto:aaron.demby.jones@gmail.com" className="text-blue-500">email</a>.
       </p>
-      <Whisper text="The work loops. The rules bend." />
-      </div>
+      <div className="flex items-center gap-2 text-lg mb-4">
+  <GalleryOfLies prompt="Lie to me" />
+</div>
+
+    </div>
   );
 }
