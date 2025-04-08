@@ -37,6 +37,20 @@ export default function BlogPosts() {
                   {formatDate(post.metadata.publishedAt, false)}
                 </p>
               </div>
+
+              {/* Add tags display */}
+              {post.metadata.tags && (
+                <div className="flex flex-wrap gap-2 mt-1">
+                  {post.metadata.tags.split(",").map((tag, index) => (
+                    <span 
+                      key={index} 
+                      className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-mono"
+                    >
+                      {tag.trim()}
+                    </span>
+                  ))}
+                </div>
+              )}
             </Link>
           ))}
       </div>
