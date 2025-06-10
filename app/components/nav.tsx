@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ThemeSwitch } from "./theme-switch";
-import { metaData } from "../config";
+import { metaData } from "../lib/config";
 
 const navItems = {
   "/blog": { name: "Blog" },

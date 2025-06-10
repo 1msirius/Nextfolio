@@ -9,7 +9,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa6";
 import { TbMailFilled } from "react-icons/tb";
-import { metaData, socialLinks } from "app/config";
+import { metaData, socialLinks } from "app/lib/config";
 
 const YEAR = new Date().getFullYear();
 
