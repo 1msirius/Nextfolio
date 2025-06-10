@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "./components/tweet.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 ::selection {
   background-color: #47a3f3;
@@ -100,7 +102,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-medium !important;
+  @apply font-medium;
 }
 
 .prose strong {
@@ -109,8 +111,8 @@ h6 {
 
 .prose > :first-child {
   /* Override removing top margin, causing layout shift */
-  margin-top: 1.25em !important;
-  margin-bottom: 1.25em !important;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
 }
 
 pre::-webkit-scrollbar {
@@ -143,7 +145,7 @@ table {
 }
 
 .prose .callout > p {
-  margin: 0 !important;
+  margin: 0;
 }
 
 .title {
