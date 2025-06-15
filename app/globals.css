@@ -115,6 +115,11 @@ h6 {
   margin-bottom: 1.25em;
 }
 
+.prose-quoteless blockquote p:first-of-type::before,
+.prose-quoteless blockquote p:first-of-type::after {
+  content: none;
+}
+
 pre::-webkit-scrollbar {
   display: none;
 }
